@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:00:16 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/22 14:58:47 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/22 15:27:55 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/22 18:14:49 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include <unistd.h>
+
+int size(char	*str)
 {
-	unsigned int	i;
+	int		i;
 
 	i = 0;
-	while (src[i] != 0 && i > n)
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
 		i++;
 	}
-	while (i < n)
+	return (i);
+}
+
+char	*ft_rev_print (char *str)
+{
+	int		len;
+
+	len = size(str);
+	while (0 <= len)
 	{
-		dest[i] = '\0';
-		i++;
+		write(1, &str[len - 1], 1);
+		len--;
 	}
-	return (dest);
+	write(1, "\n", 1);
+	return (str);
 }

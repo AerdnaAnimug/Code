@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:00:16 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/22 14:58:47 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/22 17:46:32 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/22 19:35:25 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+void	size(char *str)
 {
-	unsigned int	i;
+	int		i;
+	
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+char    *ft_strrev(char *str)
+{
+	int		i;
+	int		len;
+	char	tmp;
 
 	i = 0;
-	while (src[i] != 0 && i > n)
+	len = size(str)
+	while (i < len /  2)
 	{
-		dest[i] = src[i];
+		tmp = str[i];
+		str[i] = str[len - i - 1];
+		str[len - i - 1] = tmp;
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (str);
 }

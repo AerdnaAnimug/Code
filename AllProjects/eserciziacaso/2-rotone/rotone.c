@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   rotone.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:00:16 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/22 14:58:47 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/22 18:24:59 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/22 18:53:01 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include <unistd.h>
+
+void	rotone(char *str)
 {
-	unsigned int	i;
+	int		i;
 
 	i = 0;
-	while (src[i] != 0 && i > n)
+	while (str[i] != 0)
 	{
-		dest[i] = src[i];
-		i++;
+		if (str[i] >= 'a' && str[i] <= 'y') || (str[i] >= 'A' && str[i] <= 'Y')
+			str[i] += 1;
+		else if (str[i] == 'z' || str[i] == 'Z')
+			str[i] -= 25;
+
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+}
+
+int main(int	ac, char	**av)
+{
+	if (ac == 2)
+		rotone(av[1]);
+	write(1, '\n', 1);
 }

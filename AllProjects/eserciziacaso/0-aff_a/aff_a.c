@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   aff_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:00:16 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/22 14:58:47 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/22 11:46:44 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/22 15:21:34 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include <unistd.h>
+
+int main (int	ac,  char	**av)
 {
-	unsigned int	i;
+	int		i;
 
 	i = 0;
-	while (src[i] != 0 && i > n)
+	if (ac == 2)
 	{
-		dest[i] = src[i];
-		i++;
+		while (av[1][i] != '\0')
+		{
+			if (av[1][i] == 'a')
+			{
+				write(1, "a", 1);
+			}
+			i++;
+		}
+		write(1, "\n", 1);
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	else
+		write(1, "a\n", 2);
+	return (0);
 }

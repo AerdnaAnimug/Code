@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:00:16 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/22 14:58:47 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/22 15:47:12 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/22 19:33:38 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	i;
+#include <unistd.h>
 
+void	first_word(char *str)
+{
+	int		i;
+	
 	i = 0;
-	while (src[i] != 0 && i > n)
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
 	{
-		dest[i] = src[i];
+		write(1, &str[i], 1);
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+}
+
+int	main(int	ac, char	**av)
+{
+	
+	if (ac == 2)
+		first_word(av[1]);
+	write(1, "\n", 1);
+	return (0);
 }
