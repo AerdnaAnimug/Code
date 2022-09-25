@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afalconi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 16:51:30 by afalconi          #+#    #+#             */
-/*   Updated: 2022/09/22 11:23:19 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/23 17:29:47 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/24 15:54:42 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,60 +17,66 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	
-
 int	ft_strlen(char *str)
 {
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 1;
 	while (str[i] != '\0')
 	{
-		while (str[i + j] != '\0')
+			i++;
+	}
+	return (i);
+}
+
+int	checkerrors(char *str)
+{
+	int	i;
+	int	j;
+	int	x;
+
+	x = ft_strlen(str);
+	i = 0;
+	if (str[0] == '\0' || x == 1)
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (str[i] <= ' ' || str[i] == 127 || str[i] == '-' || str[i] == '+')
+			return (0);
+		j = i + 1;
+		while (j < ft_strlen(str))
 		{
 			if (str[i] == str[j])
 				return (0);
 			j++;
 		}
 		i++;
-		j = 1;
 	}
-	return (i);
+	return (1);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int		len;
+	int		error;
+	long	nb;
 
-	len = 0;
-	//if (base == '\0' || )
-		return (0);
 	len = ft_strlen(base);
-	if (nbr == -2147483648)
+	nb = nbr;
+	error = checkerrors(base);
+	if (error == 1)
 	{
-		ft_putchar('-');
-		ft_putnbr_base(2, base);
-		ft_putnbr_base(147483648, base);
+		if (nb < 0)
+		{
+			ft_putchar('-');
+			nb *= -1;
+		}
+		if (nb < len)
+			ft_putchar(base[nb]);
+		if (nb >= len)
+		{
+			ft_putnbr_base(nb / len, base);
+			ft_putnbr_base(nb % len, base);
+		}
 	}
-	else if (nbr < 0)
-	{
-		ft_putchar('-');
-		nbr = -nbr;
-		ft_putnbr_base(nbr, base);
-	}
-	else if (nbr > len -1)
-	{
-		ft_putnbr_base(nbr / len, base);
-		ft_putnbr_base(nbr % len, base);
-	}
-	else
-		ft_putchar(base[nbr]);
-}
-
-int	main(void)
-{
-	ft_putnbr_base(42, "ABAAAAAA");
-	return (0);
 }

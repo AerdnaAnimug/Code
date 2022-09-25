@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   dictionary.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:00:16 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/24 15:34:13 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/25 16:21:05 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/25 18:11:22 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	fd_len_dict(char *path)
 {
-	unsigned int	i;
+	int		fd;
+	int		len;
+	int		r;
+	char	buf[1];
 
-	i = 0;
-	while (src[i] != 0 && i < n)
+	r = 1;
+	len = 0;
+	fd = open(*path, O_RDONLY);
+	while (r)
 	{
-		dest[i] = src[i];
-		i++;
+		r = read(fd, buf, 10);
+		len += r;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (len);
+}
+
+int main()
+{
+	char	*str;
+
+	str = malloc((len + 1)*sizeof(char));
+	read(
 }

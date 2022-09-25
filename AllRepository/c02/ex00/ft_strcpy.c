@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:00:16 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/24 15:34:13 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/13 11:15:08 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/24 15:32:44 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strcpy(char *dest, char *src)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (src[i] != 0 && i < n)
+	while (src[i] != '\0')
 	{
-		dest[i] = src[i];
+		src[i] = dest[i];
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
+	dest[i] = '\0';
 	return (dest);
 }

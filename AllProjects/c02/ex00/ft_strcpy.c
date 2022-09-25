@@ -6,7 +6,7 @@
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 11:15:08 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/13 11:33:45 by agumina          ###   ########.fr       */
+/*   Updated: 2022/09/25 18:15:26 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strcpy(char *dest, char *src)
 	i = 0;
 	while (src[i] != '\0')
 	{
-		src[i] = dest[i];
+		dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
