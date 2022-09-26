@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nsherpa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:01:10 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/26 10:56:40 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/24 22:08:37 by nsherpa           #+#    #+#             */
+/*   Updated: 2022/09/26 15:57:42 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+#include <unistd.h>
+
+int	ft_str_is_numeric(char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	if (to_find[j] == '\0')
+	if (str[i] == '\0')
 	{
-		return (str);
+		return (1);
 	}
 	while (str[i] != '\0')
 	{
-		while (str[i + j] == to_find[j] && str[i + j] != '\0')
+		if (str[i] >= '0' && str[i] <= '9')
 		{
-			j++;
+			i ++;
 		}
-		if (to_find[j] == '\0')
-		{
-			return (str + i);
-		}
-		i++;
-		j = 0;
+		else
+			return (0);
 	}
-	return (0);
+	return (1);
+}
+
+void	ft_putstr(char *str)
+{
+	int	index;
+
+	index = 0;
+	while (str[index] != '\0')
+	{
+		write(1, &str[index], 1);
+		index++;
+	}
 }

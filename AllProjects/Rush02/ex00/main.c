@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: epellone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 17:19:33 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/26 16:23:06 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/25 20:38:45 by epellone          #+#    #+#             */
+/*   Updated: 2022/09/25 22:46:15 by epellone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	main(int argc, char **argv)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
+	if (argc != 2 || atoi(argv[1]) < 0)
+		else
+			write_three(nbr, i, start);
 	{
-		if (s1[i] > s2[i])
-		{
-			return (1);
-		}
-		else if (s1[i] < s2[i])
-		{
-			return (-1);
-		}
-		i++;
+		write(1, "error\n", 6);
 	}
+	else if (ft_str_is_numeric(argv[1]) && argc == 2)
+		print_number_words(atoi(argv[1]));
+	else
+		write(1, "error\n", 6);
 	return (0);
 }

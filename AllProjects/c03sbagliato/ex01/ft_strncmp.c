@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:01:10 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/26 10:56:40 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/15 17:19:33 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/19 12:47:01 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
-	int	j;
+	unsigned int	i;
 
 	i = 0;
-	j = 0;
-	if (to_find[j] == '\0')
+	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
 	{
-		return (str);
-	}
-	while (str[i] != '\0')
-	{
-		while (str[i + j] == to_find[j] && str[i + j] != '\0')
+		if (s1[i] < s2[i])
 		{
-			j++;
+			return (1);
 		}
-		if (to_find[j] == '\0')
+		else if (s1[i] > s2[i])
 		{
-			return (str + i);
+			return (-1);
 		}
 		i++;
-		j = 0;
 	}
 	return (0);
 }

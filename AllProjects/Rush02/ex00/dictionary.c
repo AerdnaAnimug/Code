@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   dictionary.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:01:10 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/26 10:56:40 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/25 16:21:05 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/26 16:00:29 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-char	*ft_strstr(char *str, char *to_find)
+int	fd_len_dict(char *path)
 {
-	int	i;
-	int	j;
+	int		fd;
+	int		len;
+	int		r;
+	char	buf[1];
 
-	i = 0;
-	j = 0;
-	if (to_find[j] == '\0')
+	r = 1;
+	len = 0;
+	fd = open(*path, O_RDONLY);
+	while (r)
 	{
-		return (str);
+		r = read(fd, buf, 1);
+		len += r;
 	}
-	while (str[i] != '\0')
-	{
-		while (str[i + j] == to_find[j] && str[i + j] != '\0')
-		{
-			j++;
-		}
-		if (to_find[j] == '\0')
-		{
-			return (str + i);
-		}
-		i++;
-		j = 0;
-	}
-	return (0);
+	return (len);
+}
+
+int	main(void)
+{
+	char	*str;
+
+	str = malloc((len + 1) * sizeof(char));
 }

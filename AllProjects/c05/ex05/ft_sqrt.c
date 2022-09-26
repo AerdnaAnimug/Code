@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:01:10 by agumina           #+#    #+#             */
-/*   Updated: 2022/09/26 10:56:40 by agumina          ###   ########.fr       */
+/*   Created: 2022/09/26 18:07:29 by agumina           #+#    #+#             */
+/*   Updated: 2022/09/26 18:17:42 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+int	ft_sqrt(int nb)
 {
-	int	i;
-	int	j;
+	long	y;
+	long	x;
 
-	i = 0;
-	j = 0;
-	if (to_find[j] == '\0')
+	x = nb;
+	if (x <= 0)
+		return (0);
+	if (x == 1)
+		reurn (1);
+	y = 2;
+	if (x >= 2)
 	{
-		return (str);
-	}
-	while (str[i] != '\0')
-	{
-		while (str[i + j] == to_find[j] && str[i + j] != '\0')
+		while (y * y <= x)
 		{
-			j++;
-		}
-		if (to_find[j] == '\0')
-		{
-			return (str + i);
+			return (y);
 		}
 		i++;
-		j = 0;
 	}
 	return (0);
 }
