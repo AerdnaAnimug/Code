@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,25 +12,29 @@
 
 #include "libft.h"
 
-strnstr	(const char	*big, const char *little, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	n;
+    int i;
+    int res;
+    int sign;
 
-	i = 0;
-	n = 0;
-	while (big[i] && i < len)
+    i = 0;
+	res = 0;
+	sign = 1;
+    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
 	{
-		while ((big[i + n] == little[n]) && little[n] && ((i + n) < len))
-		{
-			if (!little[n])
-				return ((char *)&big[i]);
-				n++;
-		}
-		n = 0;
+		sign = -1;
 		i++;
 	}
-	if (!little[0])
-		return ((char *)&big[i])
-	return (NULL);
+    else if (str[i] == '+')
+		i++;
+	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
+	{
+		res *= 10;
+		res += str[i] - '0';
+		i++;
+	}
+	return (res * sign);
 }

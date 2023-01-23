@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 16:31:57 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/20 17:00:36 by agumina          ###   ########.fr       */
+/*   Created: 2023/01/23 17:29:35 by agumina           #+#    #+#             */
+/*   Updated: 2023/01/23 17:29:35 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-strnstr	(const char	*big, const char *little, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
-	size_t	n;
+	void	*mem;
 
-	i = 0;
-	n = 0;
-	while (big[i] && i < len)
-	{
-		while ((big[i + n] == little[n]) && little[n] && ((i + n) < len))
-		{
-			if (!little[n])
-				return ((char *)&big[i]);
-				n++;
-		}
-		n = 0;
-		i++;
-	}
-	if (!little[0])
-		return ((char *)&big[i])
-	return (NULL);
+	mem = malloc(count * size);
+	if (!mem)
+		return (0);
+	ft_memset(mem, 0, count * size);
+	return (mem);
 }
