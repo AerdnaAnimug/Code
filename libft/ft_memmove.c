@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:50:22 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/18 14:28:57 by agumina          ###   ########.fr       */
+/*   Updated: 2023/01/24 12:49:27 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
+	unsigned char	*udst;
+	unsigned char	*usrc;
 	size_t			i;
-	unsigned char	*cdst;
-	unsigned char	*csrc;
 
 	if (!dst && !src)
 		return (NULL);
-	cdst = (unsigned char *)dst;
-	csrc = (unsigned char *)src;
+	udst = (unsigned char *)dst;
+	usrc = (unsigned char *)src;
 	i = -1;
-	if (csrc < cdst)
+	if (usrc < udst)
 		while (len-- > 0)
-			csrc[len] = cdst[len];
+			udst[len] = usrc[len];
 	else
 		while (++i < len)
-			cdst[i] = csrc[i];
-	return (csrc);
+			udst[i] = usrc[i];
+	return (udst);
 }

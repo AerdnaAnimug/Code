@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:10:07 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/18 16:41:39 by agumina          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:58:09 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	*ft_memchr(const void *s, int c, size_t len)
 
 	i = 0;
 	str = (char *)s;
-	while (i < len && str[i])
+	while (i < len)
 	{
-		if (str[i] == c)
-			return ((void *)&s[i]);
+		if (str[i] == (char)c)
+			return ((void *)(str + i));
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
