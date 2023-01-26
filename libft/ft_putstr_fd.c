@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 14:07:41 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/26 17:00:58 by agumina          ###   ########.fr       */
+/*   Created: 2023/01/26 16:40:10 by agumina           #+#    #+#             */
+/*   Updated: 2023/01/26 16:46:52 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "unistd.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
 
-	j = 0;
-	if (!s1 || !set)
-		return (0);
-	while (s1[j] && ft_strchr(set, s1[j]))
-		j++;
-	i = ft_strlen(s1);
-	while (i && ft_strchr(set, s1[i]))
-		i--;
-	return (ft_substr(s1, j, i - j + 1));
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
 }

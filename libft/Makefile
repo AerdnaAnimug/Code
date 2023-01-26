@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 17:12:01 by agumina           #+#    #+#              #
-#    Updated: 2023/01/26 16:31:24 by agumina          ###   ########.fr        #
+#    Updated: 2023/01/26 17:34:57 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 				ft_strrchr.c ft_strncmp.c ft_memchr.c \
 				ft_memcmp.c ft_strnstr.c ft_atoi.c \
 				ft_calloc.c ft_strdup.c ft_substr.c \
-				ft_strjoin.c ft_strtrim.c
+				ft_strjoin.c ft_strtrim.c ft_putchar_fd.c \
+				ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 FLAGS = -Wall -Wextra -Werror
 CC = gcc
