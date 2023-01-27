@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 17:12:01 by agumina           #+#    #+#              #
-#    Updated: 2023/01/26 17:34:57 by agumina          ###   ########.fr        #
+#    Updated: 2023/01/27 16:07:53 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,18 +21,24 @@ SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 				ft_memcmp.c ft_strnstr.c ft_atoi.c \
 				ft_calloc.c ft_strdup.c ft_substr.c \
 				ft_strjoin.c ft_strtrim.c ft_putchar_fd.c \
-				ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+				ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+				ft_itoa.c
 
-FLAGS = -Wall -Wextra -Werror
-CC = gcc
-OBJS = $(SRCS:.c=.o)
+BONUS	=	ft_lstnew.c
+FLAGS	= -Wall -Wextra -Werror
+CC		= gcc
+OBJS	= $(SRCS:.c=.o)
+BOBJS	= $(BONUS:.c=.o)
 .o:.c
 	$(CC) $(FLAGS) -c $< -o ${<:.c=.o}
 $(NAME): ${OBJS}
 	ar rcs $(NAME) $(OBJS)
+
+bonus: $(NAME) $(BOBJS)
+	ar rcs $(NAME) $(BOBJS)
 all: $(NAME)
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BOBJS)
 fclean: clean
 	rm -f $(NAME)
 re: fclean all

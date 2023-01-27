@@ -6,9 +6,11 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:17:50 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/26 17:43:32 by agumina          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:40:43 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -16,7 +18,7 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		ft_putchar_fd('-', fd);
 		ft_putchar_fd('2', fd);
-		ft_putstr_fd('147483647', fd);
+		ft_putnbr_fd(147483648, fd);
 	}
 	else if (n < 0)
 	{
