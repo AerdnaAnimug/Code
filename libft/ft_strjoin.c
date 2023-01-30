@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 17:01:11 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/25 17:01:11 by agumina          ###   ########.fr       */
+/*   Created: 2023/01/26 11:29:15 by agumina           #+#    #+#             */
+/*   Updated: 2023/01/26 12:21:38 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
+	char	*ptr;
 	size_t	i;
-	size_t	j;
-	char	*str;
+	size_t	n;
+	size_t	len;
 
 	if (!s1 || !s2)
-		return (NULL);
+		return (0);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
-	j = 0;
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
+	n = 0;
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+		return (0);
 	while (s1[i])
 	{
-		str[i] = s1[i];
+		ptr[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
-		str[i++] = s2[j++];
-	str[i] = '\0';
-	return (str);
+	while (s2[n])
+	{
+		ptr[i + n] = s2[n];
+		n++;
+	}
+	ptr[i + n] = '\0';
+	return (ptr);
 }

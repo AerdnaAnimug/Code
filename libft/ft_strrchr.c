@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:46:18 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/20 14:04:33 by agumina          ###   ########.fr       */
+/*   Updated: 2023/01/26 14:27:16 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	{
 		if ((unsigned char)*s == (unsigned char)c)
 			pos = s;
-			s++;
+		s++;
 	}
 	if (c == 0)
 		return ((char *)s);

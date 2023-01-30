@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:41:56 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/24 17:22:09 by agumina          ###   ########.fr       */
+/*   Updated: 2023/01/26 12:39:35 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	size_t				i;
 	unsigned const char	*us1;
 	unsigned const char	*us2;
 
