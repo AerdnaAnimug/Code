@@ -6,24 +6,19 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:31:07 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/31 11:31:07 by agumina          ###   ########.fr       */
+/*   Updated: 2023/02/01 10:35:11 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*last;
-
-	if (lst)
+	if (!f)
+		return ;
+	while (lst)
 	{
-		while (*lst)
-		{
-			last = (*lst)->next;
-			del((*lst)->content);
-			free(*lst);
-			*lst = last;
-		}
+		(*f)(lst->content);
+		lst = lst->next;
 	}
 }

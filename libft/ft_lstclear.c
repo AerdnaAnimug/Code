@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:29:33 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/31 11:29:33 by agumina          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:43:28 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*last;
+	t_list	*tmp;
 
-	if (lst)
+	if (!del || !lst)
+		return ;
+	while (*lst)
 	{
-		while (*lst)
-		{
-			last = (*lst)->next;
-			del((*lst)->content);
-			free(*lst);
-			*lst = last;
-		}
+		del((*lst)->content);
+		tmp = *lst;
+		*lst = tmp->next;
+		free (tmp);
 	}
+	*lst = 0;
 }
