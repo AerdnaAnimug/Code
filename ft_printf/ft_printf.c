@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:48:44 by agumina           #+#    #+#             */
-/*   Updated: 2023/02/06 17:41:22 by agumina          ###   ########.fr       */
+/*   Updated: 2023/02/06 18:05:03 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	ft_convers(char c, int *count, va_list args)
 		*count += 1;
 	}
 	else if (c == 's')
-		*count += ft_putstr();
+		*count += ft_putstr(args);
 	else if (c == 'p')
-		*count += ft_putptr();
+		*count += ft_putptr(args);
 	else if (c == 'd' || c == 'i')
-		*count += ft_putint();
+		*count += ft_putint(args);
 	else if (c == 'u')
-		*count += ft_putuns();
+		*count += ft_putuns(args);
 	else if (c == 'x' || c == 'X')
-		*count += ft_puthex();
+		*count += ft_puthex(args);
 	if (c == '%')
 	{
 		ft_putchar('%');
