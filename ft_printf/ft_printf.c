@@ -14,5 +14,25 @@
 
 int ft_printf(const char *format, ...)
 {
-	
+	va_list args;
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	va_start(args, format);
+	while(format[i])
+	{
+		if (format[i] == '%')
+		{
+			ft_convers()
+		}
+		else
+		{
+			write(1, format[i], 1);
+			i++;
+		}
+	}
+	va_end(args);
+	return (i);
 }
