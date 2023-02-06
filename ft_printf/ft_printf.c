@@ -6,39 +6,47 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:48:44 by agumina           #+#    #+#             */
-/*   Updated: 2023/02/01 17:40:01 by agumina          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:17:23 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int	ft_convers(const char type, va_list curr_arg)
+void	ft_convers(char c, int *count, va_list args)
 {
-	if (type == 'c')
-	else if (type == 's')
-	else if (type == 'p')
-	else if (type == 'd')
-	else if (type == 'i')
-	else if (type == 'u')
-	else if (type == 'x' || type == 'X')
-	else if (type == '%')
-		ft_putchar('%');
+	if (c == 'c')
+	{
+		ft_putchar(va_arg(args, int));
+		*count += 1;
+	}
+	else if (c == 's')
+		*count += ft_putstr();
+	else if (c == 'p')
+		*count += ft_putptr();
+	else if (c == 'd' || c == 'i')
+		*count += ft_putint();
+	else if (c == 'u')
+		*count += ft_putuns();
+	else if (c == 'x' || c == 'X')
+		*count += ft_puthex();
+	else if (c == '%')
+		*count += ft_putchar('%');
 	return (1);
 }
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
+	va_list	args;
 	int		i;
 	int		count;
 
 	i = 0;
 	count = 0;
 	va_start(args, format);
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			count += ft_convers(format[i], args)
+			ft_convers(format[i], count, args);
 		}
 		else
 		{
