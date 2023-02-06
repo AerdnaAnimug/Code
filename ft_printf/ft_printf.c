@@ -6,11 +6,12 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:48:44 by agumina           #+#    #+#             */
-/*   Updated: 2023/02/06 17:17:23 by agumina          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:41:22 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 void	ft_convers(char c, int *count, va_list args)
 {
 	if (c == 'c')
@@ -28,10 +29,14 @@ void	ft_convers(char c, int *count, va_list args)
 		*count += ft_putuns();
 	else if (c == 'x' || c == 'X')
 		*count += ft_puthex();
-	else if (c == '%')
-		*count += ft_putchar('%');
+	if (c == '%')
+	{
+		ft_putchar('%');
+		*count += 1;
+	}
 	return (1);
 }
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
