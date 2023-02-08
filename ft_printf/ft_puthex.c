@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putuns.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 17:39:24 by agumina           #+#    #+#             */
-/*   Updated: 2023/02/08 14:28:13 by agumina          ###   ########.fr       */
+/*   Created: 2023/02/08 13:11:58 by agumina           #+#    #+#             */
+/*   Updated: 2023/02/08 15:30:43 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putuns(unsigned int nb)
+int	puthexaux(size_t nbr, char *base)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	if (nb > 9)
+	if (nbr >= 16)
 	{
-		i += ft_putint(nb / 10);
-		nb = nb % 10;
+		i += puthexaux(nbr / 16, base);
+		puthexaux(nbr % 16, base);
 	}
-	if (nb <= 9)
-		ft_putchar(nb + 48);
+	else
+	{
+		ft_putchar(base[nbr]);
+	}
 	return (i + 1);
+}
+
+int	ft_puthex(size_t nbr)
+{
+	return (puthexaux(nbr, "0123456789ABCDEF"));
 }
