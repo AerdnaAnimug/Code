@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:13:20 by agumina           #+#    #+#             */
-/*   Updated: 2023/02/08 14:27:54 by agumina          ###   ########.fr       */
+/*   Updated: 2023/02/08 15:44:25 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	ft_putint(int nb)
 		i += write(1, "-", 1);
 		nb = -nb;
 	}
-	if (nb >= 10)
+	if (nb > 9)
 	{
 		i += ft_putint(nb / 10);
 		nb = nb % 10;
 	}
-	if (nb < 10)
+	if (nb <= 9)
 		ft_putchar(nb + 48);
 	return (i + 1);
 }
