@@ -11,3 +11,18 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putuns(unsigned int nb)
+{
+	int	i;
+
+	i = 0;
+	if (nb >9)
+	{
+		i += ft_putint(nb / 10);
+		nb = nb % 10;
+	}
+	if (nb <= 9)
+		ft_putchar(nb + 48);
+	return (i + 1);
+}

@@ -20,21 +20,22 @@ void	ft_convers(char c, int *count, va_list args)
 		*count += 1;
 	}
 	else if (c == 's')
-		*count += ft_putstr(args);
+		*count += ft_putstr(va_arg(args, char *));
 	else if (c == 'p')
-		*count += ft_putptr(args);
+		*count += ft_putptr((unsigned long)va_arg(args, void *));
 	else if (c == 'd' || c == 'i')
-		*count += ft_putint(args);
+		*count += ft_putint(va_arg(args, int));
 	else if (c == 'u')
-		*count += ft_putuns(args);
-	else if (c == 'x' || c == 'X')
-		*count += ft_puthex(args);
+		*count += ft_putuns(va_arg(args, unsigned int));
+	else if (c == 'x')
+		*count += ft_putx(va_arg(args, unsigned int));
+	else if (c == 'X')
+		*count += ft_puthex(va_arg(args, unsigned int));
 	if (c == '%')
 	{
 		ft_putchar('%');
 		*count += 1;
 	}
-	return (1);
 }
 
 int	ft_printf(const char *format, ...)
@@ -57,8 +58,9 @@ int	ft_printf(const char *format, ...)
 		{
 			write(1, format[i], 1);
 			i++;
+			count++;
 		}
 	}
 	va_end(args);
-	return (i);
+	return (count);
 }
