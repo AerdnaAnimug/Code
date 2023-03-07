@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 17:12:01 by agumina           #+#    #+#              #
-#    Updated: 2023/02/01 10:36:03 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/03 16:32:43 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 				ft_calloc.c ft_strdup.c ft_substr.c \
 				ft_strjoin.c ft_strtrim.c ft_putchar_fd.c \
 				ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-				ft_itoa.c ft_split.c ft_strmapi.c
+				ft_itoa.c ft_split.c ft_strmapi.c ft_striteri.c
 
 BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c \
