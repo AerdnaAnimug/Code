@@ -6,20 +6,30 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:08:05 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/14 14:04:57 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/14 14:45:56 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	get_y(char **strs)
+void	free_map(char **matrix)
+{
+	int	i;
+
+	i = -1;
+	while (matrix[++i])
+		free(matrix[i]);
+	free(matrix);
+}
+
+int	get_y(char **matrix)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i])
+	while (matrix[i])
 		i++;
-	retrurn(i);
+	return (i);
 }
 
 int	counter(char *path)

@@ -6,13 +6,13 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/14 13:18:10 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/14 14:50:23 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= so_long
 
-SRCS	= main.c maker.c get_next_line.c get_next_line_utilis.c
+SRCS	= main.c maker.c get_next_line.c get_next_line_utilis.c movements.c
 
 FLAGS	= -Wall -Wextra -Werror
 CC		= gcc

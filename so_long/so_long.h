@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:06:26 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/14 13:01:11 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:31:58 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 
 char	**map_maker(char *path);
 int		counter(char *path);
+int		get_y(char **matrix);
+void	free_map(char **strs);
+int		key_hook(int key, t_game *game);
+int		destroy(t_game *game);
 char	*get_next_line(int fd);
 char	*ft_read(int fd, char *save);
 char	*ft_row(char *save);
