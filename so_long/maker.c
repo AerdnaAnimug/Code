@@ -6,11 +6,21 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:08:05 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/09 17:06:31 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/14 14:04:57 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	get_y(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+		i++;
+	retrurn(i);
+}
 
 int	counter(char *path)
 {
@@ -45,7 +55,11 @@ char	**map_maker(char *path)
 	if (fd <= 0)
 		exit(0);
 	matrix = (char **) malloc((line + 1) * sizeof(char *));
+	if (!matrix)
+		return (0);
 	while (++i < line)
 		matrix[i] = get_next_line(fd);
 	matrix[line] = 0;
+	close(fd);
+	return (matrix);
 }
