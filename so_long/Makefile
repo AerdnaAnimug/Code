@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/07 12:48:19 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/09 16:06:53 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ FLAGS	= -Wall -Wextra -Werror
 CC		= gcc
 RM		= rm -f
 OBJ		= $(SRCS:.c=.o)
-MLXFLAGS = -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 $(NAME): $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:06:26 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/07 12:59:08 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/09 15:54:08 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include <mlx.h>
+# include <fcntl.h>
 # include "structs.h"
 
 #endif
