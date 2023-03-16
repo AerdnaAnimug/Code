@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:57:15 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/16 16:57:29 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/16 17:03:51 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 # define STRUCTS_H
 
 typedef struct e_enemy {
-	void	*up;
-	void	*left;
-	void	*right;
-	void	*down;
+	void	*c1;
+	void	*c2;
 }				t_enemy;
 
 typedef struct s_image {
@@ -62,7 +60,7 @@ typedef struct s_game {
 	char		**map;
 	t_imgs		imgs;
 	t_player	player;
-	t_game		enemy;
+	t_enemy		enemy;
 }				t_game;
 
 #endif
