@@ -6,13 +6,13 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:28:10 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/16 16:57:48 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/16 17:40:21 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init(t_game *game)
+void	img_init(t_game *game)
 {
 	game->imgs.floor = mlx_xpm_file_to_image(game->mlx,
 			"image/floor.xpm", &game->imgs.width, &game->imgs.height);

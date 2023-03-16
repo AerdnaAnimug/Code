@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/16 16:16:32 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/16 17:35:03 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	= main.c \
 			get_next_line_utilis.c \
 			movements.c \
 			draw_map.c \
+			player_options.c \
 			
 
 FLAGS	= -Wall -Wextra -Werror
