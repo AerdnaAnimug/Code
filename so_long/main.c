@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:24:14 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/14 16:08:20 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/16 16:38:35 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	main(int ac, char **av)
 	mlx_key_hook(game.mlx_win, key_hook, &game);
 	mlx_hook(game.mlx_win, 17, 0, destroy, (void *)&game);
 	img_init(&game);
-	//draw_map(&game);
+	draw_map(&game);
 	mlx_loop(game.mlx);
 }

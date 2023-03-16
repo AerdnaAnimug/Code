@@ -6,13 +6,19 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/14 14:50:23 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/16 16:16:32 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= so_long
 
-SRCS	= main.c maker.c get_next_line.c get_next_line_utilis.c movements.c
+SRCS	= main.c \
+			maker.c \
+			get_next_line.c \
+			get_next_line_utilis.c \
+			movements.c \
+			draw_map.c \
+			
 
 FLAGS	= -Wall -Wextra -Werror
 CC		= gcc
@@ -33,3 +39,4 @@ fclean: clean
 	rm -rf libmlx.dylib
 	$(RM) $(NAME)
 re: fclean all
+.PHONY: all clean fclean re
