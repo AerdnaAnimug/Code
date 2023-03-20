@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:28:10 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/16 17:40:21 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:40:24 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ void	img_init(t_game *game)
 			"image/floor.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.wall = mlx_xpm_file_to_image(game->mlx,
 			"image/wall.xpm", &game->imgs.width, &game->imgs.height);
+	game->imgs.obstacle = mlx_xpm_file_to_image(game->mlx,
+			"image/obstacle.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.item = mlx_xpm_file_to_image(game->mlx,
-			"image", &game->imgs.width, &game->imgs.height);
+			"image/item.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.open_door = mlx_xpm_file_to_image(game->mlx,
-			"image", &game->imgs.width, &game->imgs.height);
+			"image/door_open.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.c_door = mlx_xpm_file_to_image(game->mlx,
-			"image", &game->imgs.width, &game->imgs.height);
+			"image/door_closed.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.player = mlx_xpm_file_to_image(game->mlx,
-			"image", &game->imgs.width, &game->imgs.height);
+			"image/spyro.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.patrol = mlx_xpm_file_to_image(game->mlx,
-			"image", &game->imgs.width, &game->imgs.height);
+			"image/enemy.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.e3 = mlx_xpm_file_to_image(game->mlx,
-			"image/", &game->imgs.width, &game->imgs.height);
+			"image/enemy.xpm", &game->imgs.width, &game->imgs.height);
 }
 
 void	rules_2(t_game *game, char c)
@@ -45,7 +47,14 @@ void	rules_2(t_game *game, char c)
 	{
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
 			game->imgs.offset_x, game->imgs.offset_y);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->enemy.c1,
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.e3,
+			game->imgs.offset_x, game->imgs.offset_y);
+	}
+	else if (c == 'F')
+	{
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
+			game->imgs.offset_x, game->imgs.offset_y);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.obstacle,
 			game->imgs.offset_x, game->imgs.offset_y);
 	}
 }
@@ -70,7 +79,7 @@ void	rules(t_game *game, char c)
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
 			game->imgs.offset_x, game->imgs.offset_y);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.item,
-			game->imgs.offset_x, game->imgs.offset_y);
+			game->imgs.offset_x + 11, game->imgs.offset_y + 11);
 	}
 	else
 		rules_2(game, c);
@@ -87,7 +96,7 @@ void	draw_map(t_game *game)
 	while (++i < get_y(game->map))
 	{
 		j = -1;
-		while (j++ < ft_strlen(game->map[0]))
+		while (++j < ft_strlen(game->map[0]))
 		{
 			rules(game, game->map[i][j]);
 			game->imgs.offset_x += 64;
