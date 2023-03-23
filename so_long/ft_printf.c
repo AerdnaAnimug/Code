@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:48:44 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 14:36:21 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:47:19 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			ft_convers(format[i], count, args);
+			ft_convers(format[i], &count, args);
 		}
 		else
 		{
-			write(1, format[i], 1);
+			write(1, &format[i], 1);
 			i++;
 			count++;
 		}

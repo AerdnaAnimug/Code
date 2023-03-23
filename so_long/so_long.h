@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:06:26 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 16:14:34 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 17:13:33 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(int n);
 int		ft_printf(const char *format, ...);
+void	ft_putchar(char c);
 int		ft_puthex(size_t nbr);
+int		ft_putint(int nb);
 int		ft_putptr( unsigned long nbr);
 int		ft_putstr(char *str);
+int		ft_putuns(unsigned int nb);
+int		ft_putx(size_t nbr);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
@@ -47,6 +51,12 @@ void	img_init(t_game *game);
 char	*ft_read(int fd, char *save);
 char	*ft_row(char *save);
 char	*ft_remove(char *save);
+void	locate_player(t_game *game);
+void	print_moves(t_game *game);
+void	draw_exit(t_game *game);
+void	game_over(t_game *game);
+void	win_game(t_game *game);
+int		locate_door(t_game *game);
 
 # endif
 #endif

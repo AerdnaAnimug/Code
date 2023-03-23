@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:37:01 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 14:41:55 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 18:00:20 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_player_up(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y - 1][x] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y - 1][x] == 'G' || game->map[y - 1][x] == 'A')
+		else if (game->map[y - 1][x] == 'G')
 			game_over(game);
 		game->imgs.player = game->player.top;
 		game->player.moves++;
@@ -30,9 +30,9 @@ void	move_player_up(t_game *game, int x, int y)
 		game->map[y - 1][x] = 'P';
 		ft_printf("moving up: %d\n", game->player.moves);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
-			(x) * 61, ((y - 1) * 61) + 30);
+			(x) * 64, ((y - 1) * 64));
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
-			(x) * 61, ((y) * 61) + 30);
+			(x) * 64, ((y) * 64));
 	}
 }
 
@@ -46,7 +46,7 @@ void	move_player_down(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y + 1][x] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y + 1][x] == 'G' || game->map[y + 1][x] == 'A')
+		else if (game->map[y + 1][x] == 'G')
 			game_over(game);
 		game->imgs.player = game->player.bottom;
 		game->player.moves++;
@@ -54,9 +54,9 @@ void	move_player_down(t_game *game, int x, int y)
 		game->map[y + 1][x] = 'P';
 		ft_printf("moving down: %d\n", game->player.moves);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
-			(x) * 61, ((y + 1) * 61) + 30);
+			(x) * 64, ((y + 1) * 64));
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
-			(x) * 61, ((y) * 61) + 30);
+			(x) * 64, ((y) * 64));
 	}
 }
 
@@ -70,7 +70,7 @@ void	move_player_left(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y][x - 1] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y][x - 1] == 'G' || game->map[y][x - 1] == 'A')
+		else if (game->map[y][x - 1] == 'G')
 			game_over(game);
 		game->imgs.player = game->player.left;
 		game->player.moves++;
@@ -94,7 +94,7 @@ void	move_player_right(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y][x + 1] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y][x + 1] == 'G' || game->map[y][x + 1] == 'A')
+		else if (game->map[y][x + 1] == 'G')
 			game_over(game);
 		game->imgs.player = game->player.right;
 		game->player.moves++;

@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:57:15 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/20 15:59:01 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:55:16 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_game {
 	t_imgs		imgs;
 	t_player	player;
 	t_enemy		enemy;
+	int			door_x;
+	int			door_y;
 }				t_game;
 
 #endif

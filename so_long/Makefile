@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/23 16:19:25 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/23 16:59:10 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,13 @@ SRCS	= main.c \
 			ft_calloc.c \
 			ft_itoa.c \
 			ft_printf.c \
+			ft_putchar.c \
 			ft_puthex.c \
+			ft_putint.c \
 			ft_putptr.c \
 			ft_putstr.c \
+			ft_putuns.c \
+			ft_putx.c \
 			ft_strdup.c \
 			ft_strlcpy.c \
 			ft_strlen.c \

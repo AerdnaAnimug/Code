@@ -6,14 +6,27 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:28:10 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/20 16:40:24 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 18:07:00 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	spyro_img_init(t_game *game)
+{
+	game->player.bottom = mlx_xpm_file_to_image(game->mlx,
+			"image/spyroD.xpm", &game->imgs.width, &game->imgs.height);
+	game->player.top = mlx_xpm_file_to_image(game->mlx,
+			"image/spyroU.xpm", &game->imgs.width, &game->imgs.height);
+	game->player.left = mlx_xpm_file_to_image(game->mlx,
+			"image/spyroL.xpm", &game->imgs.width, &game->imgs.height);
+	game->player.right = mlx_xpm_file_to_image(game->mlx,
+			"image/spyroR.xpm", &game->imgs.width, &game->imgs.height);
+}
+
 void	img_init(t_game *game)
 {
+	spyro_img_init(game);
 	game->imgs.floor = mlx_xpm_file_to_image(game->mlx,
 			"image/floor.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.wall = mlx_xpm_file_to_image(game->mlx,
@@ -27,7 +40,7 @@ void	img_init(t_game *game)
 	game->imgs.c_door = mlx_xpm_file_to_image(game->mlx,
 			"image/door_closed.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.player = mlx_xpm_file_to_image(game->mlx,
-			"image/spyro.xpm", &game->imgs.width, &game->imgs.height);
+			"image/spyroD.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.patrol = mlx_xpm_file_to_image(game->mlx,
 			"image/enemy.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.e3 = mlx_xpm_file_to_image(game->mlx,
@@ -55,7 +68,7 @@ void	rules_2(t_game *game, char c)
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
 			game->imgs.offset_x, game->imgs.offset_y);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.obstacle,
-			game->imgs.offset_x, game->imgs.offset_y);
+			game->imgs.offset_x + 15, game->imgs.offset_y);
 	}
 }
 
