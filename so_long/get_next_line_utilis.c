@@ -6,23 +6,11 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:57:08 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/14 12:57:38 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:14:22 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-size_t	ft_strlen(char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strchr(char *s, int c)
 {

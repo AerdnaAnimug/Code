@@ -1,24 +1,35 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/16 17:35:03 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/23 16:19:25 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= so_long
 
 SRCS	= main.c \
-			maker.c \
-			get_next_line.c \
-			get_next_line_utilis.c \
-			movements.c \
 			draw_map.c \
+			ft_bzero.c \
+			ft_calloc.c \
+			ft_itoa.c \
+			ft_printf.c \
+			ft_puthex.c \
+			ft_putptr.c \
+			ft_putstr.c \
+			ft_strdup.c \
+			ft_strlcpy.c \
+			ft_strlen.c \
+			get_next_line_utilis.c \
+			get_next_line.c \
+			map_maker.c \
+			player_moves.c \
 			player_options.c \
+			print_moves.c
 			
 
 FLAGS	= -Wall -Wextra -Werror
@@ -37,7 +48,7 @@ clean:
 	@make -C ./mlx clean
 	$(RM) $(OBJ)
 fclean: clean
-	rm -rf libmlx.dylib
+	$(RM) libmlx.dylib
 	$(RM) $(NAME)
 re: fclean all
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:37:01 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/16 17:38:15 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 14:41:55 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_player_up(t_game *game, int x, int y)
 {
-	if (game->map[y - 1][x] != '1')
+	if (game->map[y - 1][x] != '1' && game->map[y - 1][x] != 'F')
 	{
 		if (game->map[y - 1][x] == 'C')
 			game->player.collectibles--;
@@ -33,13 +33,12 @@ void	move_player_up(t_game *game, int x, int y)
 			(x) * 61, ((y - 1) * 61) + 30);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
 			(x) * 61, ((y) * 61) + 30);
-		move_charizard(game);
 	}
 }
 
 void	move_player_down(t_game *game, int x, int y)
 {
-	if (game->map[y + 1][x] != '1')
+	if (game->map[y + 1][x] != '1' && game->map[y - 1][x] != 'F')
 	{
 		if (game->map[y + 1][x] == 'C')
 			game->player.collectibles--;
@@ -58,13 +57,12 @@ void	move_player_down(t_game *game, int x, int y)
 			(x) * 61, ((y + 1) * 61) + 30);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
 			(x) * 61, ((y) * 61) + 30);
-		move_charizard(game);
 	}
 }
 
 void	move_player_left(t_game *game, int x, int y)
 {
-	if (game->map[y][x - 1] != '1')
+	if (game->map[y][x - 1] != '1' && game->map[y - 1][x] != 'F')
 	{
 		if (game->map[y][x - 1] == 'C')
 			game->player.collectibles--;
@@ -80,16 +78,15 @@ void	move_player_left(t_game *game, int x, int y)
 		game->map[y][x] = '0';
 		game->map[y][x - 1] = 'P';
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
-			(x - 1) * 61, ((y) * 61) + 30);
+			(x - 1) * 64, ((y) * 64));
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
-			(x) * 61, ((y) * 61) + 30);
-		move_charizard(game);
+			(x) * 64, ((y) * 64));
 	}
 }
 
 void	move_player_right(t_game *game, int x, int y)
 {
-	if (game->map[y][x + 1] != '1')
+	if (game->map[y][x + 1] != '1' && game->map[y - 1][x] != 'F')
 	{
 		if (game->map[y][x + 1] == 'C')
 			game->player.collectibles--;
@@ -105,10 +102,9 @@ void	move_player_right(t_game *game, int x, int y)
 		game->map[y][x + 1] = 'P';
 		ft_printf("moving right: %d\n", game->player.moves);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
-			(x) * 61, ((y) * 61) + 30);
+			(x) * 64, ((y) * 64));
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
-			(x + 1) * 61, ((y) * 61) + 30);
-		move_charizard(game);
+			(x + 1) * 64, ((y) * 64));
 	}
 }
 
