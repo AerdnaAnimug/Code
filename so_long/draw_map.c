@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:28:10 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 18:07:00 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/23 18:26:38 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	img_init(t_game *game)
 	game->imgs.obstacle = mlx_xpm_file_to_image(game->mlx,
 			"image/obstacle.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.item = mlx_xpm_file_to_image(game->mlx,
-			"image/item.xpm", &game->imgs.width, &game->imgs.height);
+			"image/item1.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.open_door = mlx_xpm_file_to_image(game->mlx,
 			"image/door_open.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.c_door = mlx_xpm_file_to_image(game->mlx,
