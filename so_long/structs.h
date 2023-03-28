@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:57:15 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 18:57:24 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/28 15:11:54 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_image {
 	void	*open_door;
 	void	*player;
 	void	*c_door;
-	void	*patrol;
+	void	*enemy;
 	void	*e3;
 }				t_imgs;
 

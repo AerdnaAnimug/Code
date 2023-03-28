@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:28:10 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 18:26:38 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/28 16:19:36 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	spyro_img_init(t_game *game)
 void	img_init(t_game *game)
 {
 	spyro_img_init(game);
+	collect_eggs(game);
+	game->player.moves = 0;
+	game->done = 0;
 	game->imgs.floor = mlx_xpm_file_to_image(game->mlx,
 			"image/floor.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.wall = mlx_xpm_file_to_image(game->mlx,
@@ -41,9 +44,7 @@ void	img_init(t_game *game)
 			"image/door_closed.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.player = mlx_xpm_file_to_image(game->mlx,
 			"image/spyroD.xpm", &game->imgs.width, &game->imgs.height);
-	game->imgs.patrol = mlx_xpm_file_to_image(game->mlx,
-			"image/enemy.xpm", &game->imgs.width, &game->imgs.height);
-	game->imgs.e3 = mlx_xpm_file_to_image(game->mlx,
+	game->imgs.enemy = mlx_xpm_file_to_image(game->mlx,
 			"image/enemy.xpm", &game->imgs.width, &game->imgs.height);
 }
 
@@ -60,7 +61,7 @@ void	rules_2(t_game *game, char c)
 	{
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
 			game->imgs.offset_x, game->imgs.offset_y);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.e3,
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.enemy,
 			game->imgs.offset_x, game->imgs.offset_y);
 	}
 	else if (c == 'F')
