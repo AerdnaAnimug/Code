@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:08:05 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/29 14:26:00 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/29 15:05:13 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	file_linecount(char *file)
 	j = 0;
 	l = get_next_line(fd);
 	if (!l)
-		null_error("Mappa vuota");
+		ft_printf("Mappa vuota");
 	i = ft_strlen(l) - 1;
 	while (l)
 	{
@@ -81,27 +81,25 @@ int	file_linecount(char *file)
 
 char	**map_maker(char *path)
 {
-	char	**map;
-	int		fd;
-	int		i;
 	int		line;
+	int		i;
+	int		fd;
+	char	**strs;
 
 	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		null_error("Errore nell'apertura del file");
-	line = file_linecount(path);
-	if (line == 0)
-		return (0);
-	map = (char **)malloc(sizeof(char *) * (line + 1));
-	if (!map)
-		null_error_freemap("Errore nell'allocazione di memoria", fd, map);
+	if (fd <= 0)
+		exit(0);
 	i = -1;
+	line = counter(path);
+	strs = (char **) malloc((line + 1) * sizeof(char *));
 	while (++i < line)
-		map[i] = get_next_line(fd);
-	map[line] = 0;
-	i = -1;
-	if (!is_valid_map(map))
-		null_error_freemap("Mappa non valida", fd, map);
+		strs[i] = get_next_line(fd);
+	strs[line] = 0;
+	if (!is_valid_map(strs))
+	{
+		free_map(strs);
+		exit(0);
+	}
 	close(fd);
-	return (map);
+	return (strs);
 }

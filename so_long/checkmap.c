@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:16:35 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/29 14:29:34 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/29 15:00:34 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_rect(char **map)
 	i = 0;
 	if (x - 1 == y)
 	{
-		null_error_woexit("Mappa quadrata !!!");
+		ft_printf("Error\nMappa quadrata !!!\n");
 		return (0);
 	}
 	while (i < y)
@@ -34,7 +34,7 @@ int	is_rect(char **map)
 	}
 	if (i == y)
 		return (1);
-	null_error_woexit("Mappa quadrata o non rettangolare !!!");
+	ft_printf("Error\nMappa quadrata o non rettangolare !!!\n");
 	return (0);
 }
 
@@ -43,24 +43,25 @@ int	border_wall(char **map)
 	int	i;
 	int	k;
 
-	i = -1;
+	i = 0;
 	k = ft_strlen(map[0]);
-	while (map[0][++i] != 0)
+	while (map[0][i] != '\n')
 	{
-		if (map[0][i] != '1')
+		if (map[0][i++] != '1')
 			return (0);
 	}
-	i = -1;
-	while ((map[get_y(map) - 1][++i] != 0))
+	i = 0;
+	while ((map[get_y(map) - 1][i] != '\n'))
 	{
-		if (map[get_y(map) - 1][i] != '1')
+		if (map[get_y(map) - 1][i++] != '1')
 			return (0);
 	}
-	i = -1;
-	while (map[++i])
+	i = 0;
+	while (map[i])
 	{
-		if ((map[i][0] != '1') || (map[i][k - 1] != '1'))
+		if ((map[i][0] != '1') || (map[i][k - 2] != '1'))
 			return (0);
+		i++;
 	}
 	return (1);
 }
@@ -78,7 +79,7 @@ int	check_entities(char **map)
 	while (map[++i])
 	{
 		j = -1;
-		while (map[i][++j] != 0)
+		while (map[i][++j] != '\n')
 		{
 			if (map[i][j] == 'E')
 				counter[0] = 1;
@@ -90,7 +91,7 @@ int	check_entities(char **map)
 	}
 	if (counter[0] && counter[1] && counter[2])
 		return (1);
-	null_error_woexit("inserisci almeno 1 player/uscita/collezionabile !!!");
+	ft_printf("Error\ninserisci almeno 1 player / uscita / collectibles !!!\n");
 	return (0);
 }
 
@@ -119,11 +120,11 @@ int	is_valid_map(char **map)
 	while (map[++i])
 	{
 		j = -1;
-		while (map[i][++j] != 0)
+		while (map[i][++j] != '\n')
 		{
 			if (!is_in_set(map[i][j]))
 			{
-				null_error_woexit("Invalid char in map!!!");
+				ft_printf("Error\nInvalid char in map !!!\n");
 				return (0);
 			}
 		}
@@ -132,7 +133,7 @@ int	is_valid_map(char **map)
 		return (0);
 	if (!border_wall(map))
 	{
-		null_error_woexit("Il muro è aperto !!!");
+		ft_printf("Error\nIl muro è aperto !!!\n");
 		return (0);
 	}
 	else
