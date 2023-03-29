@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:06:26 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/28 15:30:01 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/29 14:18:41 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,15 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 
+int		is_valid_map(char **map);
 void	draw_map(t_game *game);
+void	*null_error(char *message);
+void	*null_error_wfile(char *message, int fd);
+void	*null_error_freemap(char *message, int fd, char **map);
+void	null_error_woexit(char *message);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-char	*ft_itoa(int n);
+char	*ft_itoa(long n);
 int		ft_printf(const char *format, ...);
 void	ft_putchar(char c);
 int		ft_puthex(size_t nbr);

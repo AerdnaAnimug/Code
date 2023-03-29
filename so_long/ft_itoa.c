@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:55:34 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 15:16:07 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:49:58 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	len(long n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	long	x;
 	int		l;

@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:24:14 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/23 18:48:02 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:03:34 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(int ac, char **av)
 	game.map = map_maker(av[1]);
 	game.mlx_win = mlx_new_window(game.mlx, ft_strlen(game.map[0]) * 64,
 			get_y(game.map) * 64, "so_long");
-	mlx_key_hook(game.mlx_win, key_hook, &game);
-	mlx_hook(game.mlx_win, 17, 0, destroy, (void *)&game);
 	img_init(&game);
 	draw_map(&game);
+	mlx_key_hook(game.mlx_win, key_hook, (void *) &game);
+	mlx_hook(game.mlx_win, 17, 0, destroy, (void *)&game);
 	mlx_loop(game.mlx);
 }

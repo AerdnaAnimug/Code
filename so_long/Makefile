@@ -6,14 +6,16 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/23 16:59:10 by agumina          ###   ########.fr        #
+#    Updated: 2023/03/29 14:18:05 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= so_long
 
 SRCS	= main.c \
+			checkmap.c \
 			draw_map.c \
+			errors.c \
 			ft_bzero.c \
 			ft_calloc.c \
 			ft_itoa.c \

@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:37:01 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/28 17:02:04 by agumina          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:36:18 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,96 @@ void	move_player_up(t_game *game, int x, int y)
 		game->map[y][x] = '0';
 		game->map[y - 1][x] = 'P';
 		ft_printf("moving up: %d\n", game->player.moves);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
-			(x) * 64, ((y - 1) * 64));
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
 			(x) * 64, ((y) * 64));
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
+			(x) * 64, ((y - 1) * 64));
+	}
+}
+
+void	move_player_down(t_game *game, int x, int y)
+{
+	if (game->map[y + 1][x] != '1' && game->map[y + 1][x] != 'F')
+	{
+		if (game->map[y + 1][x] == 'C')
+			game->player.collectibles--;
+		else if (game->map[y + 1][x] == 'E' && game->done == 0)
+			return ;
+		else if (game->map[y + 1][x] == 'E' && game->done)
+			win_game(game);
+		else if (game->map[y + 1][x] == 'G' || game->map[y + 1][x] == 'A')
+			game_over(game);
+		game->imgs.player = game->player.bottom;
+		game->player.moves++;
+		game->map[y][x] = '0';
+		game->map[y + 1][x] = 'P';
+		ft_printf("moving down: %d\n", game->player.moves);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
+			(x) * 64, ((y) * 64));
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
+			(x) * 64, ((y + 1) * 64));
+	}
+}
+
+void	move_player_left(t_game *game, int x, int y)
+{
+	if (game->map[y][x - 1] != '1' && game->map[y][x - 1] != 'F')
+	{
+		if (game->map[y][x - 1] == 'C')
+			game->player.collectibles--;
+		else if (game->map[y][x - 1] == 'E' && game->done == 0)
+			return ;
+		else if (game->map[y][x - 1] == 'E' && game->done)
+			win_game(game);
+		else if (game->map[y][x - 1] == 'G' || game->map[y][x - 1] == 'A')
+			game_over(game);
+		game->imgs.player = game->player.left;
+		game->player.moves++;
+		game->map[y][x] = '0';
+		game->map[y][x - 1] = 'P';
+		ft_printf("moving left: %d\n", game->player.moves);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
+			(x) * 64, ((y) * 64));
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
+			(x - 1) * 64, ((y) * 64));
+	}
+}
+
+void	move_player_right(t_game *game, int x, int y)
+{
+	if (game->map[y][x + 1] != '1' && game->map[y][x + 1] != 'F')
+	{
+		if (game->map[y][x + 1] == 'C')
+			game->player.collectibles--;
+		else if (game->map[y][x + 1] == 'E' && game->done == 0)
+			return ;
+		else if (game->map[y][x + 1] == 'E' && game->done)
+			win_game(game);
+		else if (game->map[y][x + 1] == 'G' || game->map[y][x + 1] == 'A')
+			game_over(game);
+		game->imgs.player = game->player.right;
+		game->player.moves++;
+		game->map[y][x] = '0';
+		game->map[y][x + 1] = 'P';
+		ft_printf("moving right: %d\n", game->player.moves);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
+			(x) * 64, ((y) * 64));
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.player,
+			(x + 1) * 64, ((y) * 64));
 	}
 }
 
 int	key_hook(int key, t_game *game)
 {
 	locate_player(game);
-	/*if (key == 2 || key == 124)
+	if (key == 2 || key == 124)
 		move_player_right(game, game->player.x, game->player.y);
-	else */if (key == 13 || key == 126)
+	else if (key == 13 || key == 126)
 		move_player_up(game, game->player.x, game->player.y);
-	/*else if (key == 0 || key == 123)
+	else if (key == 0 || key == 123)
 		move_player_left(game, game->player.x, game->player.y);
 	else if (key == 1 || key == 125)
-		move_player_down(game, game->player.x, game->player.y);*/
+		move_player_down(game, game->player.x, game->player.y);
 	if (key == 53)
 	{
 		free_map(game->map);
