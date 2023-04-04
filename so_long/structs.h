@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:57:15 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/28 15:11:54 by agumina          ###   ########.fr       */
+/*   Updated: 2023/04/04 16:55:54 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,17 @@ typedef struct s_image {
 	void	*player;
 	void	*c_door;
 	void	*enemy;
-	void	*e3;
 }				t_imgs;
 
 typedef struct e_player {
 	void	*top;
+	void	*top2;
 	void	*bottom;
+	void	*bottom2;
 	void	*left;
+	void	*left2;
 	void	*right;
+	void	*right2;
 	int		x;
 	int		y;
 	int		moves;

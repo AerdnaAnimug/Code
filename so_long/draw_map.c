@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:28:10 by agumina           #+#    #+#             */
-/*   Updated: 2023/04/04 16:25:18 by agumina          ###   ########.fr       */
+/*   Updated: 2023/04/04 16:56:21 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	spyro_img_init(t_game *game)
 			"image/spyroL.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.right = mlx_xpm_file_to_image(game->mlx,
 			"image/spyroR.xpm", &game->imgs.width, &game->imgs.height);
+	game->player.right2 = mlx_xpm_file_to_image(game->mlx,
+			"image/spyroR2.xpm", &game->imgs.width, &game->imgs.height);
 }
 
 void	img_init(t_game *game)

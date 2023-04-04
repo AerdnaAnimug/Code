@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:24:11 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/28 16:03:55 by agumina          ###   ########.fr       */
+/*   Updated: 2023/04/04 17:00:20 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	win_game(t_game *game)
 void	game_over(t_game *game)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
-		game->imgs.e3, (game->player.x) * 61, ((game->player.y) * 61) + 30);
+		game->imgs.enemy, (game->player.x) * 64, ((game->player.y) * 64));
 	free_map(game->map);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	ft_printf("Peccato, riprova! Mosse compiute: %d\n", game->player.moves);

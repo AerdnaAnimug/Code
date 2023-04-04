@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:37:01 by agumina           #+#    #+#             */
-/*   Updated: 2023/03/29 15:04:39 by agumina          ###   ########.fr       */
+/*   Updated: 2023/04/04 17:04:48 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_player_up(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y - 1][x] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y - 1][x] == 'G' || game->map[y - 1][x] == 'A')
+		else if (game->map[y - 1][x] == 'G')
 			game_over(game);
 		game->imgs.player = game->player.top;
 		game->player.moves++;
@@ -46,7 +46,7 @@ void	move_player_down(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y + 1][x] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y + 1][x] == 'G' || game->map[y + 1][x] == 'A')
+		else if (game->map[y + 1][x] == 'G' )
 			game_over(game);
 		game->imgs.player = game->player.bottom;
 		game->player.moves++;
@@ -70,7 +70,7 @@ void	move_player_left(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y][x - 1] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y][x - 1] == 'G' || game->map[y][x - 1] == 'A')
+		else if (game->map[y][x - 1] == 'G')
 			game_over(game);
 		game->imgs.player = game->player.left;
 		game->player.moves++;
@@ -94,9 +94,12 @@ void	move_player_right(t_game *game, int x, int y)
 			return ;
 		else if (game->map[y][x + 1] == 'E' && game->done)
 			win_game(game);
-		else if (game->map[y][x + 1] == 'G' || game->map[y][x + 1] == 'A')
+		else if (game->map[y][x + 1] == 'G')
 			game_over(game);
-		game->imgs.player = game->player.right;
+		if (game->imgs.player == game->player.right)
+			game->imgs.player = game->player.right2;
+		else
+			game->imgs.player = game->player.right;
 		game->player.moves++;
 		game->map[y][x] = '0';
 		game->map[y][x + 1] = 'P';
