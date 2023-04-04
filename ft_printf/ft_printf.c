@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:48:44 by agumina           #+#    #+#             */
-/*   Updated: 2023/02/06 18:05:03 by agumina          ###   ########.fr       */
+/*   Updated: 2023/04/04 15:13:44 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	ft_printf(const char *format, ...)
 		else
 		{
 			write(1, format[i], 1);
-			i++;
 			count++;
 		}
+		i++;
 	}
 	va_end(args);
 	return (count);
