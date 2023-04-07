@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/03/29 15:01:42 by agumina          ###   ########.fr        #
+#    Updated: 2023/04/07 17:52:45 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJ		= $(SRCS:.c=.o)
 $(NAME): $(OBJ)
 	@make -C ./mlx
 	@cp ./mlx/libmlx.dylib .
-	$(CC) $(OBJ) -L ./mlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all: $(NAME)
 clean:

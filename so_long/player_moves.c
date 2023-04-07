@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:37:01 by agumina           #+#    #+#             */
-/*   Updated: 2023/04/04 17:04:48 by agumina          ###   ########.fr       */
+/*   Updated: 2023/04/07 15:31:28 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	move_player_up(t_game *game, int x, int y)
 			win_game(game);
 		else if (game->map[y - 1][x] == 'G')
 			game_over(game);
-		game->imgs.player = game->player.top;
+		if (game->imgs.player == game->player.top)
+			game->imgs.player = game->player.top2;
+		else
+			game->imgs.player = game->player.top;
 		game->player.moves++;
 		game->map[y][x] = '0';
 		game->map[y - 1][x] = 'P';
@@ -48,7 +51,10 @@ void	move_player_down(t_game *game, int x, int y)
 			win_game(game);
 		else if (game->map[y + 1][x] == 'G' )
 			game_over(game);
-		game->imgs.player = game->player.bottom;
+		if (game->imgs.player == game->player.bottom)
+			game->imgs.player = game->player.bottom2;
+		else
+			game->imgs.player = game->player.bottom;
 		game->player.moves++;
 		game->map[y][x] = '0';
 		game->map[y + 1][x] = 'P';
@@ -72,7 +78,10 @@ void	move_player_left(t_game *game, int x, int y)
 			win_game(game);
 		else if (game->map[y][x - 1] == 'G')
 			game_over(game);
-		game->imgs.player = game->player.left;
+		if (game->imgs.player == game->player.left)
+			game->imgs.player = game->player.left2;
+		else
+			game->imgs.player = game->player.left;
 		game->player.moves++;
 		game->map[y][x] = '0';
 		game->map[y][x - 1] = 'P';
