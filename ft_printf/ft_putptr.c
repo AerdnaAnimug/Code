@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:11:55 by agumina           #+#    #+#             */
-/*   Updated: 2023/02/08 14:27:38 by agumina          ###   ########.fr       */
+/*   Updated: 2023/05/03 17:03:27 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	putptraux(unsigned long nbr, char *base)
 	return (i + 1);
 }
 
-int	ft_putptr( unsigned long nbr)
+int	ft_putptr(unsigned long nbr)
 {
 	if (nbr == 0)
 		return (write(1, "0x0", 3));
