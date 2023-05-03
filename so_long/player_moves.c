@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:37:01 by agumina           #+#    #+#             */
-/*   Updated: 2023/04/07 15:31:28 by agumina          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:55:09 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,6 @@ int	key_hook(int key, t_game *game)
 	}
 	if (game->player.collectibles == 0)
 		draw_exit(game);
-	//print_moves(game);
+	print_moves(game);
 	return (0);
 }

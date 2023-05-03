@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:02:59 by agumina           #+#    #+#              #
-#    Updated: 2023/04/07 17:52:45 by agumina          ###   ########.fr        #
+#    Updated: 2023/05/03 15:58:59 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS	= main.c \
 			ft_strlen.c \
 			get_next_line_utilis.c \
 			get_next_line.c \
+			game_functions.c \
 			map_maker.c \
 			player_moves.c \
 			player_options.c \

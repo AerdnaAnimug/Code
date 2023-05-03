@@ -6,64 +6,50 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:24:11 by agumina           #+#    #+#             */
-/*   Updated: 2023/04/04 17:00:20 by agumina          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:57:22 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_exit(t_game *game)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	locate_door(game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
-		game->imgs.offset_x, game->imgs.offset_y);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.open_door,
-		(game->door_x) * 64, ((game->door_y) * 64));
-	game->done = 1;
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-void	win_game(t_game *game)
+void	draw_rect(int x, int y, t_game *game)
 {
-	game->player.moves++;
-	free_map(game->map);
-	mlx_destroy_window(game->mlx, game->mlx_win);
-	ft_printf("Daje fenomeno :D Mosse compiute: %d\n", game->player.moves);
-	exit(0);
-}
-
-void	game_over(t_game *game)
-{
-	mlx_put_image_to_window(game->mlx, game->mlx_win,
-		game->imgs.enemy, (game->player.x) * 64, ((game->player.y) * 64));
-	free_map(game->map);
-	mlx_destroy_window(game->mlx, game->mlx_win);
-	ft_printf("Peccato, riprova! Mosse compiute: %d\n", game->player.moves);
-	sleep(4);
-	exit(0);
-}
-
-int	locate_door(t_game *game)
-{
-	int		i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (i < get_y(game->map))
+	while (i < y)
 	{
 		j = 0;
-		while (j < ft_strlen(game->map[0]))
+		while (j < x)
 		{
-			if (game->map[i][j] == 'E')
-			{
-				game->door_y = i;
-				game->door_x = j;
-				return (1);
-			}
+			my_mlx_pixel_put(&game->img, j, i, 0x00000000);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.img, 0, 0);
+}
+
+void	test(t_game *game)
+{
+	game->img.img = mlx_new_image(game->mlx, 400, 30);
+	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_per_pixel,
+			&game->img.line_length, &game->img.endian);
+	draw_rect(400, 30, game);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	print_moves(t_game *game)
@@ -71,11 +57,11 @@ void	print_moves(t_game *game)
 	char	*str;
 	char	*temp;
 
+	test(game);
 	temp = ft_itoa(game->player.moves);
-	str = ft_strjoin("Mosse: ", temp);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.wall, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.wall, 64, 0);
-	mlx_string_put(game->mlx, game->mlx_win, 20, 10, 0xFFFFFF, str);
-	free(str);
+	str = ft_strjoin(ft_strdup("mosse: "), temp);
+	mlx_string_put(game->mlx, game->mlx_win, 20, 10,
+		create_trgb(255, 255, 255, 255), str);
 	free(temp);
+	free(str);
 }
