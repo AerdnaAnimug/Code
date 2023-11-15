@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:57:15 by agumina           #+#    #+#             */
-/*   Updated: 2023/04/07 16:33:53 by agumina          ###   ########.fr       */
+/*   Updated: 2023/11/15 12:36:20 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_image {
 	int		height;
 	void	*floor;
 	void	*wall;
-	void	*obstacle;
 	void	*item1;
 	void	*item2;
 	void	*item3;

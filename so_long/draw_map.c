@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:28:10 by agumina           #+#    #+#             */
-/*   Updated: 2023/04/07 17:48:51 by agumina          ###   ########.fr       */
+/*   Updated: 2023/11/15 12:37:58 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 void	spyro_img_init(t_game *game)
 {
 	game->player.bottom = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroD.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroD.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.bottom2 = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroD2.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroD2.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.top = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroU.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroU.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.top2 = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroU2.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroU2.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.left = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroL.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroL.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.left2 = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroL2.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroL2.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.right = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroR.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroR.xpm", &game->imgs.width, &game->imgs.height);
 	game->player.right2 = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroR2.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroR2.xpm", &game->imgs.width, &game->imgs.height);
 }
 
 void	img_init(t_game *game)
@@ -40,19 +40,17 @@ void	img_init(t_game *game)
 	game->player.moves = 0;
 	game->done = 0;
 	game->imgs.floor = mlx_xpm_file_to_image(game->mlx,
-			"image/floor.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/floor.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.wall = mlx_xpm_file_to_image(game->mlx,
-			"image/wall.xpm", &game->imgs.width, &game->imgs.height);
-	game->imgs.obstacle = mlx_xpm_file_to_image(game->mlx,
-			"image/obstacle.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/wall.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.open_door = mlx_xpm_file_to_image(game->mlx,
-			"image/door_open.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/door_open.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.c_door = mlx_xpm_file_to_image(game->mlx,
-			"image/door_closed.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/door_closed.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.player = mlx_xpm_file_to_image(game->mlx,
-			"image/spyroD.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/spyroD.xpm", &game->imgs.width, &game->imgs.height);
 	game->imgs.enemy = mlx_xpm_file_to_image(game->mlx,
-			"image/enemy.xpm", &game->imgs.width, &game->imgs.height);
+			"textures/enemy.xpm", &game->imgs.width, &game->imgs.height);
 }
 
 void	rules_2(t_game *game, char c)
@@ -70,13 +68,6 @@ void	rules_2(t_game *game, char c)
 			game->imgs.offset_x, game->imgs.offset_y);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.enemy,
 			game->imgs.offset_x, game->imgs.offset_y);
-	}
-	else if (c == 'F')
-	{
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.floor,
-			game->imgs.offset_x, game->imgs.offset_y);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.obstacle,
-			game->imgs.offset_x + 15, game->imgs.offset_y);
 	}
 }
 

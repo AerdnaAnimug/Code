@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:37:01 by agumina           #+#    #+#             */
-/*   Updated: 2023/05/03 15:55:09 by agumina          ###   ########.fr       */
+/*   Updated: 2023/11/15 12:39:05 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_player_up(t_game *game, int x, int y)
 {
-	if (game->map[y - 1][x] != '1' && game->map[y - 1][x] != 'F')
+	if (game->map[y - 1][x] != '1')
 	{
 		if (game->map[y - 1][x] == 'C')
 			game->player.collectibles--;
@@ -41,7 +41,7 @@ void	move_player_up(t_game *game, int x, int y)
 
 void	move_player_down(t_game *game, int x, int y)
 {
-	if (game->map[y + 1][x] != '1' && game->map[y + 1][x] != 'F')
+	if (game->map[y + 1][x] != '1')
 	{
 		if (game->map[y + 1][x] == 'C')
 			game->player.collectibles--;
@@ -68,7 +68,7 @@ void	move_player_down(t_game *game, int x, int y)
 
 void	move_player_left(t_game *game, int x, int y)
 {
-	if (game->map[y][x - 1] != '1' && game->map[y][x - 1] != 'F')
+	if (game->map[y][x - 1] != '1')
 	{
 		if (game->map[y][x - 1] == 'C')
 			game->player.collectibles--;
@@ -95,7 +95,7 @@ void	move_player_left(t_game *game, int x, int y)
 
 void	move_player_right(t_game *game, int x, int y)
 {
-	if (game->map[y][x + 1] != '1' && game->map[y][x + 1] != 'F')
+	if (game->map[y][x + 1] != '1')
 	{
 		if (game->map[y][x + 1] == 'C')
 			game->player.collectibles--;

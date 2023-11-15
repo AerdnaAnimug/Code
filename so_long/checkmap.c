@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:16:35 by agumina           #+#    #+#             */
-/*   Updated: 2023/04/07 18:31:38 by agumina          ###   ########.fr       */
+/*   Updated: 2023/11/15 12:36:55 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	is_in_set(char c)
 	char	*set;
 	int		i;
 
-	set = "01CPEFG";
+	set = "01CPEG";
 	i = 0;
 	while (set[i])
 	{
