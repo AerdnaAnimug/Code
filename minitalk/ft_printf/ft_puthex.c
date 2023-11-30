@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 12:34:49 by agumina           #+#    #+#             */
-/*   Updated: 2023/11/30 12:34:38 by agumina          ###   ########.fr       */
+/*   Created: 2023/02/08 13:11:58 by agumina           #+#    #+#             */
+/*   Updated: 2023/02/08 15:30:43 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include "./ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-void	signal_handler(int signal)
+int	puthexaux(size_t nbr, char *base)
 {
-	if (signal == SIGUSR1)
+	int		i;
+
+	i = 0;
+	if (nbr >= 16)
 	{
-		
+		i += puthexaux(nbr / 16, base);
+		puthexaux(nbr % 16, base);
 	}
+	else
+	{
+		ft_putchar(base[nbr]);
+	}
+	return (i + 1);
 }
-int	main(void)
-{
-	pid_t				pid;
-	struct sigaction	sa;
 
-	pid = getpid();
-	ft_printf("Server PID: %d\n," pid);
-	sa.sa_handler = signal_handler;
-	while (1)
-		pause();
+int	ft_puthex(size_t nbr)
+{
+	return (puthexaux(nbr, "0123456789ABCDEF"));
 }

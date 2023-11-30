@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putuns.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 12:34:49 by agumina           #+#    #+#             */
-/*   Updated: 2023/11/30 12:34:38 by agumina          ###   ########.fr       */
+/*   Created: 2023/02/06 17:39:24 by agumina           #+#    #+#             */
+/*   Updated: 2023/02/08 14:28:13 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include "./ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-void	signal_handler(int signal)
+int	ft_putuns(unsigned int nb)
 {
-	if (signal == SIGUSR1)
+	int	i;
+
+	i = 0;
+	if (nb > 9)
 	{
-		
+		i += ft_putint(nb / 10);
+		nb = nb % 10;
 	}
-}
-int	main(void)
-{
-	pid_t				pid;
-	struct sigaction	sa;
-
-	pid = getpid();
-	ft_printf("Server PID: %d\n," pid);
-	sa.sa_handler = signal_handler;
-	while (1)
-		pause();
+	if (nb <= 9)
+		ft_putchar(nb + 48);
+	return (i + 1);
 }

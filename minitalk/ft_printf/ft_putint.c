@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 12:34:49 by agumina           #+#    #+#             */
-/*   Updated: 2023/11/30 12:34:38 by agumina          ###   ########.fr       */
+/*   Created: 2023/02/06 17:13:20 by agumina           #+#    #+#             */
+/*   Updated: 2023/02/08 15:44:25 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include "./ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-void	signal_handler(int signal)
+int	ft_putint(int nb)
 {
-	if (signal == SIGUSR1)
+	int	i;
+
+	i = 0;
+	if (nb == -2147483648)
 	{
-		
+		write(1, "-2147483648", 11);
+		return (11);
 	}
-}
-int	main(void)
-{
-	pid_t				pid;
-	struct sigaction	sa;
-
-	pid = getpid();
-	ft_printf("Server PID: %d\n," pid);
-	sa.sa_handler = signal_handler;
-	while (1)
-		pause();
+	if (nb < 0)
+	{
+		i += write(1, "-", 1);
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		i += ft_putint(nb / 10);
+		nb = nb % 10;
+	}
+	if (nb <= 9)
+		ft_putchar(nb + 48);
+	return (i + 1);
 }

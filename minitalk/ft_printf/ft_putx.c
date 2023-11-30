@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 12:34:49 by agumina           #+#    #+#             */
-/*   Updated: 2023/11/30 12:34:38 by agumina          ###   ########.fr       */
+/*   Created: 2023/02/08 13:11:45 by agumina           #+#    #+#             */
+/*   Updated: 2023/02/08 15:28:42 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include "./ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-void	signal_handler(int signal)
+int	putxaux(size_t nbr, char *base)
 {
-	if (signal == SIGUSR1)
+	int		i;
+
+	i = 0;
+	if (nbr >= 16)
 	{
-		
+		i += putxaux(nbr / 16, base);
+		putxaux(nbr % 16, base);
 	}
+	else
+	{
+		ft_putchar(base[nbr]);
+	}
+	return (i + 1);
 }
-int	main(void)
-{
-	pid_t				pid;
-	struct sigaction	sa;
 
-	pid = getpid();
-	ft_printf("Server PID: %d\n," pid);
-	sa.sa_handler = signal_handler;
-	while (1)
-		pause();
+int	ft_putx(size_t nbr)
+{
+	return (putxaux(nbr, "0123456789abcdef"));
 }

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 12:34:49 by agumina           #+#    #+#             */
-/*   Updated: 2023/11/30 12:34:38 by agumina          ###   ########.fr       */
+/*   Created: 2023/02/06 16:31:52 by agumina           #+#    #+#             */
+/*   Updated: 2023/02/06 17:13:00 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include "./ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-void	signal_handler(int signal)
+int	ft_putstr(char *str)
 {
-	if (signal == SIGUSR1)
+	int	i;
+
+	i = 0;
+	if (!str)
 	{
-		
+		write(1, "(null)", 6);
+		return (6);
 	}
-}
-int	main(void)
-{
-	pid_t				pid;
-	struct sigaction	sa;
-
-	pid = getpid();
-	ft_printf("Server PID: %d\n," pid);
-	sa.sa_handler = signal_handler;
-	while (1)
-		pause();
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return (i);
 }

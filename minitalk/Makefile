@@ -13,6 +13,9 @@ RM			= rm -f
 
 all: lib $(NAME_SERVER) $(NAME_CLIENT)
 
+lib:
+	make -C ./ft_printf
+
 $(NAME_CLIENT):
 		$(CC) $(FLAGS) $(CLIENT) ./ft_printf/libftprintf.a -o $(NAME_CLIENT)
 

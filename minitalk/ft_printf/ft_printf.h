@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 12:34:49 by agumina           #+#    #+#             */
-/*   Updated: 2023/11/30 12:34:38 by agumina          ###   ########.fr       */
+/*   Created: 2023/02/01 15:22:42 by agumina           #+#    #+#             */
+/*   Updated: 2023/11/30 11:07:59 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include "./ft_printf/ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	signal_handler(int signal)
-{
-	if (signal == SIGUSR1)
-	{
-		
-	}
-}
-int	main(void)
-{
-	pid_t				pid;
-	struct sigaction	sa;
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
 
-	pid = getpid();
-	ft_printf("Server PID: %d\n," pid);
-	sa.sa_handler = signal_handler;
-	while (1)
-		pause();
-}
+int		ft_printf(const char	*format, ...);
+int		ft_putint(int nb);
+int		ft_putuns(unsigned	int nb);
+int		ft_putstr(char *str);
+void	ft_putchar(char c);
+int		ft_putptr(unsigned long nbr);
+int		ft_putx(size_t nbr);
+int		ft_puthex(size_t nbr);
+
+#endif
