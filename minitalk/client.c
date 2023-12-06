@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:34:46 by agumina           #+#    #+#             */
-/*   Updated: 2023/11/30 11:51:07 by agumina          ###   ########.fr       */
+/*   Updated: 2023/12/06 12:58:40 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 void	sign_handler(int signal)
 {
 	if (signal == SIGUSR1)
-		printf("Message sent");
+		printf("Message sent\n");
 }
 
 void	ft_sendsignal(char *str, pid_t pid)
 {
 	int	i;
 
-	while (*str)
+	i = -1;
+	while (str[++i])
 	{
 		while (++i < 8)
 		{
-			i = -1;
 			if ((*str >> i) % 2)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep(1000);
+			usleep(500);
 		}
 		str++;
 	}
@@ -73,9 +73,15 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 		exit(ft_printf("%s<server_pid> <message>\n", argv[0]));
-	pid = ft_atoi(argv[1]);
-	if (pid <= 0)
-		exit(ft_printf("Error, <server_pid> must be higher than 0\n"));
-	sa.sa_handler = sign_handler;
-	ft_sendsignal(argv[2], pid);
+	else
+	{
+		pid = ft_atoi(argv[1]);
+		if (pid <= 0)
+			exit(ft_printf("Error, <server_pid> must be higher than 0\n"));
+		sigemptyset(&sa.sa_mask);
+		sa.sa_handler = sign_handler;
+		sigaction(SIGUSR1, &sa, NULL);
+		ft_sendsignal(argv[2], pid);
+	}
+	return (0);
 }

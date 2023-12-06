@@ -20,7 +20,7 @@ $(NAME_CLIENT):
 		$(CC) $(FLAGS) $(CLIENT) ./ft_printf/libftprintf.a -o $(NAME_CLIENT)
 
 $(NAME_SERVER):
-		$(cc) $(FLAGS) $(SERVER) ./ft_printf/libftprintf.a -o $(NAME_SERVER)
+		$(CC) $(FLAGS) $(SERVER) ./ft_printf/libftprintf.a -o $(NAME_SERVER)
 
 clean:
 		make clean -C ./ft_printf

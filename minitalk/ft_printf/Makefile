@@ -9,24 +9,16 @@ SRCS	=	ft_printf.c \
 			ft_putx.c \
 			ft_puthex.c 
 
-OBJS	=	$(SRCS:.c=.o)
-RM		=	rm -f
-LIBC	=	ar -rcs
-FLAGS	=	-Wall -Wextra -Werror
-INCS	=	.
-
-.c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
-
+FLAGS = -Wall -Wextra -Werror
+CC = gcc
+OBJS = $(SRCS:.c=.o)
+.o:.c
+	$(CC) $(FLAGS) -c $< -o ${<:.c=.o}
 $(NAME): ${OBJS}
-	${LIBC} $(NAME) $(OBJS)
-
+	ar rcs $(NAME) $(OBJS)
 all: $(NAME)
-
-fclean: clean
-	$(RM) $(NAME)
-
 clean:
-	$(RM) $(OBJS)
-
+	rm -f $(OBJS)
+fclean: clean
+	rm -f $(NAME)
 re: fclean all
