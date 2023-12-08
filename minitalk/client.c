@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:34:46 by agumina           #+#    #+#             */
-/*   Updated: 2023/12/08 10:29:23 by agumina          ###   ########.fr       */
+/*   Updated: 2023/12/08 11:29:56 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	struct sigaction	sa;
 
 	if (argc != 3)
-		exit(ft_printf("%s<server_pid> <message>\n", argv[0]));
+		exit(ft_printf("%s <server_pid> <message>\n", argv[0]));
 	else
 	{
 		pid = ft_atoi(argv[1]);
