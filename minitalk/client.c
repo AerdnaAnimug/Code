@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:34:46 by agumina           #+#    #+#             */
-/*   Updated: 2023/12/08 11:29:56 by agumina          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:44:52 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	main(int argc, char **argv)
 			exit(ft_printf("Error, <server_pid> must be higher than 0\n"));
 		sigemptyset(&sa.sa_mask);
 		sa.sa_handler = sign_handler;
+		sa.sa_flags = 0;
 		sigaction(SIGUSR1, &sa, NULL);
 		ft_sendsignal(argv[2], pid);
 	}
