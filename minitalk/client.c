@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:34:46 by agumina           #+#    #+#             */
-/*   Updated: 2023/12/06 12:58:40 by agumina          ###   ########.fr       */
+/*   Updated: 2023/12/08 10:29:23 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,22 @@
 void	sign_handler(int signal)
 {
 	if (signal == SIGUSR1)
-		printf("Message sent\n");
+		ft_printf("Message sent\n");
+}
+
+void	shifting(char c, pid_t pid)
+{
+	int	bit;
+
+	bit = -1;
+	while (++bit < 8)
+	{
+		if ((c >> bit) % 2)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(500);
+	}
 }
 
 void	ft_sendsignal(char *str, pid_t pid)
@@ -26,17 +41,9 @@ void	ft_sendsignal(char *str, pid_t pid)
 
 	i = -1;
 	while (str[++i])
-	{
-		while (++i < 8)
-		{
-			if ((*str >> i) % 2)
-				kill(pid, SIGUSR2);
-			else
-				kill(pid, SIGUSR1);
-			usleep(500);
-		}
-		str++;
-	}
+		shifting(str[i], pid);
+	shifting('\0', pid);
+	shifting('\n', pid);
 }
 
 int	ft_atoi(const char *str)
