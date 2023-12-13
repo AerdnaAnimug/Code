@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:26:32 by agumina           #+#    #+#             */
-/*   Updated: 2023/12/11 12:26:01 by agumina          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:20:27 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,13 @@
 # include "stdarg.h"
 # include "./libft/libft.h"
 
+typedef struct e_stack{
+	int	*stack_a;
+	int	*stack_b;
+	int	size_a;
+	int	size_b;
+}	t_stack;
+
 int	main(int argc, char **argv);
+
 #endif
