@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:26:32 by agumina           #+#    #+#             */
-/*   Updated: 2023/12/13 10:20:27 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:16:36 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct e_stack{
 	int	*stack_b;
 	int	size_a;
 	int	size_b;
+	int size_c;
+	int number_a;
 }	t_stack;
 
 int	main(int argc, char **argv);
