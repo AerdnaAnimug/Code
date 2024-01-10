@@ -2,9 +2,15 @@ NAME		= push_swap
 LIBFT		= ./libft
 LIBFT_LIB	= libft.a
 SRCS		= main.c \
+				algo.c \
+				checks.c \
 				move_s.c \
 				move_p.c \
-				move_r.c 
+				move_r.c \
+				move_rr.c \
+				num_assign.c \
+				sorter.c \
+				
 
 OBJS		= $(SRCS:.c=.o)
 RM			= rm -f

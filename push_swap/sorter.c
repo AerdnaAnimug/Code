@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:35:28 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 12:35:28 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:32:57 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_sort_two(t_stack *stack)
 
 void	ft_sort_five(t_stack *stack)
 {
-	while (stack->size_a > stack->size_l - 2)
+	while (stack->size_a > stack->size_c - 2)
 	{
 		while (stack->stack_a[0] == 4 || stack->stack_a[0] == 5)
 			pb(stack, 1);

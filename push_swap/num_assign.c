@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 17:57:55 by agumina           #+#    #+#             */
+/*   Created: 2024/01/04 15:47:22 by agumina           #+#    #+#             */
 /*   Updated: 2024/01/09 17:57:55 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -45,5 +45,27 @@ void	ft_num_stack(t_stack *stack)
 	{
 		stack->num[i] = stack->stack_a[i];
 		i++;
+	}
+}
+
+void	ft_empty_stack_a(t_stack *stack)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (j < stack->size_a)
+	{
+		i = 0;
+		while (i < stack->size_a)
+		{
+			if (stack->stack_a[j] == stack->num[i])
+			{
+				stack->stack_a[j] = i + 1;
+				break ;
+			}
+			i++;
+		}
+		j++;
 	}
 }
