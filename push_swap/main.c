@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:58:08 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 18:29:49 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/10 20:23:17 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,7 @@ void	init_a(t_stack *stack, char **temp1)
 		if (ft_atoi(temp1[i]) == 0 && temp1[i][0] != '0')
 			exit(write(2, "Error\n", 6));
 		stack->stack_a[i] = ft_atoi(temp1[i]);
-		free(temp1[i]);
 	}
-	stack->size_a = i;
-	stack->size_c = stack->size_a;
-	stack->stack_a = (int *) malloc (stack->size_a * sizeof(int));
 }
 
 void	ft_size_count(int argc, char **argv, t_stack *stack)
@@ -80,9 +76,18 @@ void	ft_size_count(int argc, char **argv, t_stack *stack)
 		temp = ft_strjoin(temp, " ");
 	}
 	temp1 = ft_split(temp, ' ');
-	init_a(stack, &temp);
-	free (temp1);
-	free (temp);
+	i = -1;
+	while (temp1[++i])
+		;
+	free(temp);
+	stack->size_a = i;
+	stack->size_l = stack->size_a;
+	stack->stack_a = (int *) malloc (stack->size_a * sizeof(int));
+	init_a(stack, temp1);
+	i = -1;
+	while (temp1[++i])
+		free(temp1[i]);
+	free(temp1);
 }
 
 int	main(int argc, char **argv)
@@ -95,10 +100,9 @@ int	main(int argc, char **argv)
 	if (ft_is_ordered(&stack))
 		return (0);
 	ft_num_stack(&stack);
-	ft_bubb_sort(&stack);
+	ft_arr_sort(&stack);
 	ft_empty_stack_a(&stack);
 	init_b(&stack);
 	push_all_b(&stack);
-	ft_free(&stack);
 	return (0);
 }

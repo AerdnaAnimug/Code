@@ -5,52 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/10 20:20:27 by agumina           #+#    #+#              #
-#    Updated: 2024/01/16 12:53:27 by agumina          ###   ########.fr        #
+#    Created: 2023/01/18 17:12:01 by agumina           #+#    #+#              #
+#    Updated: 2024/01/16 11:40:06 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME	=	libft.a
 
-LIBFT = ./libft
-
-LIBFT_LIB = libft.a
-
-SRCS = main.c	\
-		checks.c    \
-		move_r.c \
-		move_rr.c \
-		move_s.c  \
-		move_p.c \
-		ft_sortings.c \
-		algo.c    \
-		num_assign.c \
-
-OBJS	= $(SRCS:.c=.o)
-RM		= rm -f
-LIBC	= ar -rcs
-CC		= gcc
-DEBUG	= gcc -g
-LEAKS   = gcc -g -fsanitize=address
+SRCS	=	ft_atoi.c ft_isdigit.c ft_split.c \
+			ft_strjoin.c ft_strlen.c ft_substr.c
+			
 FLAGS	= -Wall -Wextra -Werror
-INCS	= ./
+CC		= gcc
+OBJS	= $(SRCS:.c=.o)
+
+.o:.c
+	$(CC) $(FLAGS) -c $< -o ${<:.c=.o}
+$(NAME): ${OBJS}
+	ar rcs $(NAME) $(OBJS)
 
 all: $(NAME)
-
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -c $< -o $@
-
-
-$(NAME): $(OBJS)
-	make -C $(LIBFT)
-	$(CC) $(LIBFT)/$(LIBFT_LIB) $(OBJS) -o $(NAME)
-
-fclean: clean
-	$(RM) $(NAME) $(LIBFT)/$(LIBFT_LIB)
-
 clean:
-	
-	$(RM) $(OBJS)
-	make clean -C $(LIBFT)
-
+	rm -f $(OBJS) $(BOBJS)
+fclean: clean
+	rm -f $(NAME)
 re: fclean all

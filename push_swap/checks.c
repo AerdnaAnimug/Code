@@ -6,13 +6,13 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:57:41 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/09 17:57:41 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:20:53 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_b(t_stack *stack) //stack b con tutti i valori a 0
+void	init_b(t_stack *stack)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ void	init_b(t_stack *stack) //stack b con tutti i valori a 0
 	}
 }
 
-int	ft_smallest(t_stack *stack) //valore piu' piccolo di stack_a
+int	ft_smallest(t_stack *stack)
 {
 	int	smallest;
 	int	i;
@@ -43,7 +43,7 @@ int	ft_smallest(t_stack *stack) //valore piu' piccolo di stack_a
 	return (smallest);
 }
 
-int	ft_biggest(t_stack *stack) //valore piu' grande
+int	ft_biggest(t_stack *stack)
 {
 	int	biggest;
 	int	i;
@@ -61,7 +61,7 @@ int	ft_biggest(t_stack *stack) //valore piu' grande
 	return (biggest);
 }
 
-int	ft_is_ordered(t_stack *stack) //check se fosse ordinato in modo crescente
+int	ft_is_ordered(t_stack *stack)
 {
 	int	i;
 
@@ -72,6 +72,6 @@ int	ft_is_ordered(t_stack *stack) //check se fosse ordinato in modo crescente
 			return (0);
 		i++;
 	}
-	ft_free(stack);
+	ft_freedom(stack);
 	return (1);
 }

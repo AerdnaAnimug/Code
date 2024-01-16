@@ -6,13 +6,13 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:28:21 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 18:01:20 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/10 20:15:07 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_binlen(int n) //funzione x calcolare la lunghezza in bit in binario
+int	ft_binlen(int n)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_binlen(int n) //funzione x calcolare la lunghezza in bit in binario
 	return (i);
 }
 
-void	ft_big_stack(t_stack *stack) //funzione per taanti numeri
+void	ft_big_push(t_stack *stack)
 {
 	int	i;
 	int	k;
@@ -54,10 +54,10 @@ void	push_all_b(t_stack *stack)
 	else if (stack->size_a == 5)
 		ft_sort_five(stack);
 	else
-		ft_big_stack(stack);
+		ft_big_push(stack);
 }
 
-void	ft_free(t_stack *stack)
+void	ft_freedom(t_stack *stack)
 {
 	free(stack->stack_a);
 	free(stack->stack_b);
