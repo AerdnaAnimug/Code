@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:28:21 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 20:15:07 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:08:07 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	push_all_b(t_stack *stack)
 		ft_big_push(stack);
 }
 
-void	ft_freedom(t_stack *stack)
+void	ft_free(t_stack *stack)
 {
 	free(stack->stack_a);
 	free(stack->stack_b);

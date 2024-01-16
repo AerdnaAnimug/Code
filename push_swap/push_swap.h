@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 09:57:33 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 20:19:01 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:08:32 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void	ft_sort_five(t_stack *stack);
 void	ft_arr_sort(t_stack *stack);
 void	ft_empty_stack_a(t_stack *stack);
 void	ft_big_push(t_stack *stack);
-void	ft_freedom(t_stack *stack);
+void	ft_free(t_stack *stack);
 
 #endif

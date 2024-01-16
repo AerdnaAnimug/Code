@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:57:41 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/16 12:20:53 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:08:27 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	ft_is_ordered(t_stack *stack)
 			return (0);
 		i++;
 	}
-	ft_freedom(stack);
+	ft_free(stack);
 	return (1);
 }
