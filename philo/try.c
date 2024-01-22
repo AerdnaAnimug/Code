@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   try.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 14:35:21 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/22 11:17:15 by agumina          ###   ########.fr       */
+/*   Created: 2024/01/18 13:03:57 by agumina           #+#    #+#             */
+/*   Updated: 2024/01/18 13:07:12 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#include "philosophers.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <sys/time.h>
-# include <semaphore.h>
-# include <pthread.h>
-
-typedef struct e_params
+void	example(void)
 {
-	int	number_of_philosophers;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	notepme;
-}	t_params;
+	pthread_t	t1;
+	pthread_t	t2;
 
-typedef struct s_philo
-{
-	t_data	*params;
-}	t_philo;
-
-#endif
+	if (pthread_create(&t1, NULL, print_hello, NULL)
+		exit(1);
+}
