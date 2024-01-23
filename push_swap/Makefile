@@ -6,7 +6,7 @@
 #    By: agumina <agumina@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/10 20:20:27 by agumina           #+#    #+#              #
-#    Updated: 2024/01/16 12:53:27 by agumina          ###   ########.fr        #
+#    Updated: 2024/01/23 16:46:27 by agumina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ LIBFT_LIB = libft.a
 
 SRCS = main.c	\
 		checks.c    \
-		move_r.c \
-		move_rr.c \
-		move_s.c  \
-		move_p.c \
+		commands_r.c \
+		commands_rr.c \
+		commands_s.c  \
+		commands_p.c \
 		ft_sortings.c \
 		algo.c    \
 		num_assign.c \
@@ -43,7 +43,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT)
-	$(CC) $(LIBFT)/$(LIBFT_LIB) $(OBJS) -o $(NAME)
+	$(CC) $(OBJS) $(LIBFT)/$(LIBFT_LIB) -o $(NAME)
 
 fclean: clean
 	$(RM) $(NAME) $(LIBFT)/$(LIBFT_LIB)

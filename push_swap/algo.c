@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:28:21 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/16 14:08:07 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:55:21 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,19 @@ void	push_all_b(t_stack *stack)
 
 void	ft_free(t_stack *stack)
 {
-	free(stack->stack_a);
-	free(stack->stack_b);
-	free(stack->num);
+	if (stack->stack_a)
+	{
+		free(stack->stack_a);
+		stack->stack_a = NULL;
+	}
+	if (stack->stack_b)
+	{
+		free(stack->stack_b);
+		stack->stack_b = NULL;
+	}
+	if (stack->num)
+	{
+		free(stack->num);
+		stack->num = NULL;
+	}
 }
