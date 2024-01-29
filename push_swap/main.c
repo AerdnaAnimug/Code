@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:58:08 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/23 16:53:38 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/29 13:51:48 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,11 @@ void	ft_size_count(int argc, char **argv, t_stack *stack)
 	}
 	temp1 = ft_split(temp, ' ');
 	i = -1;
+	free(temp);
 	while (temp1[++i])
 		;
-	free(temp);
 	stack->size_a = i;
+	stack->size_b = 0;
 	stack->size_l = stack->size_a;
 	stack->stack_a = (int *) malloc (stack->size_a * sizeof(int));
 	if (stack->stack_a == NULL)

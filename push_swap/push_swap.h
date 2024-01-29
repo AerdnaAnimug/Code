@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 09:57:33 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/16 14:08:32 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/29 10:26:19 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ typedef struct e_stack
 	int				size_a;
 	int				size_l;
 	int				size_b;
-	int				num_a;
-	int				placed_number;
-	int				min_num;
-	int				nbr;
 	int				*num;
 
 }	t_stack;

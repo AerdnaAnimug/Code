@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_p.c                                           :+:      :+:    :+:   */
+/*   commands_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:21:28 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 20:16:45 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/29 13:11:24 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	pb(t_stack *stack, int flag)
 	if (!stack->size_a)
 		return ;
 	i = stack->size_b;
+	stack->stack_b[i] = 1;
+	printf("Check\n");
+	printf("Valore di stack_b: %d\n", stack->stack_b[i]);
 	while (i > 0)
 	{
 		stack->stack_b[i] = stack->stack_b[i - 1];
