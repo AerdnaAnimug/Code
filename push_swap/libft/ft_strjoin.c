@@ -6,13 +6,13 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:29:15 by agumina           #+#    #+#             */
-/*   Updated: 2023/01/26 12:21:38 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:39:38 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*ptr;
 	size_t	i;
@@ -38,5 +38,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		n++;
 	}
 	ptr[i + n] = '\0';
+	free(s1);
 	return (ptr);
 }

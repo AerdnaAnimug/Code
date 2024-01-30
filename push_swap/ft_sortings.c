@@ -6,62 +6,62 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:35:28 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/29 10:49:57 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:23:14 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_three(t_stack *stack)
+void	ft_sort_three(t_set *set)
 {
-	if (ft_smallest(stack) == stack->stack_a[0]
-		&& ft_biggest(stack) == stack->stack_a[1])
+	if (ft_smaller(set) == set->set_a[0]
+		&& ft_bigger(set) == set->set_a[1])
 	{
-		rra(stack, 1);
-		sa(stack, 1);
+		rra(set, 1);
+		sa(set, 1);
 	}
-	if (ft_biggest(stack) == stack->stack_a[0]
-		&& ft_smallest(stack) == stack->stack_a[2])
+	if (ft_bigger(set) == set->set_a[0]
+		&& ft_smaller(set) == set->set_a[2])
 	{
-		ra(stack, 1);
-		sa(stack, 1);
+		ra(set, 1);
+		sa(set, 1);
 	}
-	if (ft_biggest(stack) == stack->stack_a[0]
-		&& ft_smallest(stack) == stack->stack_a[1])
-		ra(stack, 1);
-	if (ft_smallest(stack) == stack->stack_a[1]
-		&& ft_biggest(stack) == stack->stack_a[2])
-		sa(stack, 1);
-	if (ft_biggest(stack) == stack->stack_a[1]
-		&& ft_smallest(stack) == stack->stack_a[2])
-		rra(stack, 1);
+	if (ft_bigger(set) == set->set_a[0]
+		&& ft_smaller(set) == set->set_a[1])
+		ra(set, 1);
+	if (ft_smaller(set) == set->set_a[1]
+		&& ft_bigger(set) == set->set_a[2])
+		sa(set, 1);
+	if (ft_bigger(set) == set->set_a[1]
+		&& ft_smaller(set) == set->set_a[2])
+		rra(set, 1);
 }
 
-void	ft_sort_two(t_stack *stack)
+void	ft_sort_two(t_set *set)
 {
-	if (ft_smallest(stack) != stack->stack_a[0])
-		sa(stack, 1);
+	if (ft_smaller(set) != set->set_a[0])
+		sa(set, 1);
 }
 
-void	ft_sort_five(t_stack *stack)
+void	ft_sort_five(t_set *set)
 {
-	while (stack->size_a > stack->size_l - 2)
+	while (set->size_a > set->size_l - 2)
 	{
-		while (stack->stack_a[0] == 4 || stack->stack_a[0] == 5)
-			pb(stack, 1);
-		ra(stack, 1);
+		while (set->set_a[0] == 4 || set->set_a[0] == 5)
+			pb(set, 1);
+		ra(set, 1);
 	}
-	ft_sort_three(stack);
-	if (stack->stack_b[0] == 5)
+	ft_sort_three(set);
+	if (set->set_b[0] == 5)
 	{
-		pa(stack, 1);
-		pa(stack, 1);
-		ra(stack, 1);
-		ra(stack, 1);
+		pa(set, 1);
+		pa(set, 1);
+		ra(set, 1);
+		ra(set, 1);
 		return ;
 	}
-	pa(stack, 1);
-	ra(stack, 1);
-	pa(stack, 1);
-	ra(stack, 1);
+	pa(set, 1);
+	ra(set, 1);
+	pa(set, 1);
+	ra(set, 1);
 }

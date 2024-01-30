@@ -6,24 +6,24 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:58:08 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/29 13:51:48 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:33:09 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_dups(t_stack *stack)
+void	check_dups(t_set *set)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < stack->size_a)
+	while (i < set->size_a)
 	{
 		j = i + 1;
-		while (j < stack->size_a)
+		while (j < set->size_a)
 		{
-			if (stack->stack_a[i] == stack->stack_a[j])
+			if (set->set_a[i] == set->set_a[j])
 			{
 				exit(write(2, "Error\n", 6));
 			}
@@ -48,66 +48,67 @@ void	check_arg(int argc, char **argv)
 	}
 }
 
-void	init_a(t_stack *stack, char **temp1)
+void	init_a(t_set *set, char **tmp1)
 {
 	int	i;
 
 	i = -1;
-	while (temp1[++i])
+	while (tmp1[++i])
 	{
-		if (ft_atoi(temp1[i]) == 0 && temp1[i][0] != '0')
+		if (ft_atoi(tmp1[i]) == 0 && tmp1[i][0] != '0')
 			exit(write(2, "Error\n", 6));
-		stack->stack_a[i] = ft_atoi(temp1[i]);
+		set->set_a[i] = ft_atoi(tmp1[i]);
 	}
 }
 
-void	ft_size_count(int argc, char **argv, t_stack *stack)
+void	ft_size_count(int argc, char **argv, t_set *set)
 {
 	int		i;
-	char	*temp;
-	char	**temp1;
+	char	*tmp;
+	char	**tmp1;
 
-	temp = (char *) malloc (sizeof(char));
-	if (temp == NULL)
+	tmp = (char *) malloc (sizeof(char));
+	if (tmp == NULL)
 		exit(write(2, "Merror\n", 7));
-	temp[0] = 0;
+	tmp[0] = 0;
 	i = 0;
 	while (++i < argc)
 	{
-		temp = ft_strjoin(temp, argv[i]);
-		temp = ft_strjoin(temp, " ");
+		tmp = ft_strjoin(tmp, argv[i]);
+		tmp = ft_strjoin(tmp, " ");
 	}
-	temp1 = ft_split(temp, ' ');
+	tmp1 = ft_split(tmp, ' ');
 	i = -1;
-	free(temp);
-	while (temp1[++i])
+	free(tmp);
+	while (tmp1[++i])
 		;
-	stack->size_a = i;
-	stack->size_b = 0;
-	stack->size_l = stack->size_a;
-	stack->stack_a = (int *) malloc (stack->size_a * sizeof(int));
-	if (stack->stack_a == NULL)
+	set->size_a = i;
+	set->size_b = 0;
+	set->size_l = set->size_a;
+	set->set_a = (int *) malloc (set->size_a * sizeof(int));
+	if (set->set_a == NULL)
 		exit(write(2, "Merror\n", 7));
-	init_a(stack, temp1);
+	init_a(set, tmp1);
 	i = -1;
-	while (temp1[++i])
-		free(temp1[i]);
-	free(temp1);
+	while (tmp1[++i])
+		free(tmp1[i]);
+	free(tmp1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	stack;
+	t_set	set;
 
 	check_arg(argc, argv);
-	ft_size_count(argc, argv, &stack);
-	check_dups(&stack);
-	if (ft_is_ordered(&stack))
+	ft_size_count(argc, argv, &set);
+	check_dups(&set);
+	if (ft_is_ordered(&set))
 		return (0);
-	ft_num_stack(&stack);
-	ft_arr_sort(&stack);
-	ft_empty_stack_a(&stack);
-	init_b(&stack);
-	push_all_b(&stack);
+	ft_num_set(&set);
+	ft_arr_sort(&set);
+	ft_empty_set_a(&set);
+	init_b(&set);
+	push_all_b(&set);
+	ft_free(&set);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:28:21 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/23 15:55:21 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:33:52 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_binlen(int n)
+int	ft_binarylen(int n)
 {
 	int	i;
 
@@ -22,56 +22,44 @@ int	ft_binlen(int n)
 	return (i);
 }
 
-void	ft_big_push(t_stack *stack)
+void	ft_push_all(t_set *set)
 {
 	int	i;
 	int	k;
 	int	c;
 
 	k = -1;
-	c = ft_binlen(stack->size_a);
+	c = ft_binarylen(set->size_a);
 	while (++k < c - 1)
 	{
-		i = stack->size_a;
+		i = set->size_a;
 		while (--i >= 0)
 		{
-			if ((stack->stack_a[0] >> k) % 2 == 1)
-				ra(stack, 1);
+			if ((set->set_a[0] >> k) % 2 == 1)
+				ra(set, 1);
 			else
-				pb(stack, 1);
+				pb(set, 1);
 		}
-		while (stack->size_b > 0)
-			pa(stack, 1);
+		while (set->size_b > 0)
+			pa(set, 1);
 	}
 }
 
-void	push_all_b(t_stack *stack)
+void	push_all_b(t_set *set)
 {
-	if (stack->size_a == 3)
-		ft_sort_three(stack);
-	else if (stack->size_a == 2)
-		ft_sort_two(stack);
-	else if (stack->size_a == 5)
-		ft_sort_five(stack);
+	if (set->size_a == 3)
+		ft_sort_three(set);
+	else if (set->size_a == 2)
+		ft_sort_two(set);
+	else if (set->size_a == 5)
+		ft_sort_five(set);
 	else
-		ft_big_push(stack);
+		ft_push_all(set);
 }
 
-void	ft_free(t_stack *stack)
+void	ft_free(t_set *set)
 {
-	if (stack->stack_a)
-	{
-		free(stack->stack_a);
-		stack->stack_a = NULL;
-	}
-	if (stack->stack_b)
-	{
-		free(stack->stack_b);
-		stack->stack_b = NULL;
-	}
-	if (stack->num)
-	{
-		free(stack->num);
-		stack->num = NULL;
-	}
+		free(set->set_a);
+		free(set->set_b);
+		free(set->num);
 }

@@ -6,54 +6,54 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:21:33 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/29 10:37:08 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:23:14 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack *stack, int flag)
+void	ra(t_set *set, int flag)
 {
 	int	i;
-	int	temp;
+	int	tmp;
 
-	if (!stack || !stack->size_a)
+	if (!set || !set->size_a)
 		return ;
 	i = 0;
-	temp = stack->stack_a[0];
-	while (i < stack->size_a - 1)
+	tmp = set->set_a[0];
+	while (i < set->size_a - 1)
 	{
-		stack->stack_a[i] = stack->stack_a[i + 1];
+		set->set_a[i] = set->set_a[i + 1];
 		i++;
 	}
-	stack->stack_a[i] = temp;
+	set->set_a[i] = tmp;
 	if (flag)
 		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *stack, int flag)
+void	rb(t_set *set, int flag)
 {
 	int	i;
-	int	temp;
+	int	tmp;
 
-	if (!stack->size_b)
+	if (!set->size_b)
 		return ;
 	i = 0;
-	temp = stack->stack_b[0];
-	while (i < stack->size_b - 1)
+	tmp = set->set_b[0];
+	while (i < set->size_b - 1)
 	{
-		stack->stack_b[i] = stack->stack_b[i + 1];
+		set->set_b[i] = set->set_b[i + 1];
 		i++;
 	}
-	stack->stack_b[i] = temp;
+	set->set_b[i] = tmp;
 	if (flag)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack *stack, int flag)
+void	rr(t_set *set, int flag)
 {
-	ra(stack, 0);
-	rb(stack, 0);
+	ra(set, 0);
+	rb(set, 0);
 	if (flag)
 		write(1, "rr\n", 3);
 }

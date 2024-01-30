@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_s.c                                           :+:      :+:    :+:   */
+/*   commands_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:21:35 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 20:18:33 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:23:14 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack *stack, int flag)
+void	sa(t_set *set, int flag)
 {
-	int	temp;
+	int	tmp;
 
-	if (!stack->size_a)
+	if (!set->size_a)
 		return ;
-	temp = stack->stack_a[0];
-	stack->stack_a[0] = stack->stack_a[1];
-	stack->stack_a[1] = temp;
+	tmp = set->set_a[0];
+	set->set_a[0] = set->set_a[1];
+	set->set_a[1] = tmp;
 	if (flag)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack *stack, int flag)
+void	sb(t_set *set, int flag)
 {
-	int	temp;
+	int	tmp;
 
-	if (!stack->size_b)
+	if (!set->size_b)
 		return ;
-	temp = stack->stack_b[0];
-	stack->stack_b[0] = stack->stack_b[1];
-	stack->stack_b[1] = temp;
+	tmp = set->set_b[0];
+	set->set_b[0] = set->set_b[1];
+	set->set_b[1] = tmp;
 	if (flag)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack *stack, int flag)
+void	ss(t_set *set, int flag)
 {
-	sa(stack, 0);
-	sb(stack, 0);
+	sa(set, 0);
+	sb(set, 0);
 	if (flag)
 		write(1, "ss\n", 3);
 }

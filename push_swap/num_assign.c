@@ -6,43 +6,43 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:47:22 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 20:18:48 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:23:14 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_num_stack(t_stack *stack)
+void	ft_num_set(t_set *set)
 {
 	int	i;
 
 	i = 0;
-	stack->num = (int *) malloc(stack->size_a * sizeof(int));
-	while (i < stack->size_a)
+	set->num = (int *) malloc(set->size_a * sizeof(int));
+	while (i < set->size_a)
 	{
-		stack->num[i] = stack->stack_a[i];
+		set->num[i] = set->set_a[i];
 		i++;
 	}
 }
 
-void	ft_arr_sort(t_stack *stack)
+void	ft_arr_sort(t_set *set)
 {
 	int	i;
 	int	j;
-	int	temp;
+	int	tmp;
 
 	i = 0;
 	j = 0;
-	while (j < stack->size_a - 1)
+	while (j < set->size_a - 1)
 	{
 		i = 0;
-		while (i < stack->size_a - 1)
+		while (i < set->size_a - 1)
 		{
-			if (stack->num[i] > stack->num[i + 1])
+			if (set->num[i] > set->num[i + 1])
 			{
-				temp = stack->num[i];
-				stack->num[i] = stack->num[i + 1];
-				stack->num[i + 1] = temp;
+				tmp = set->num[i];
+				set->num[i] = set->num[i + 1];
+				set->num[i + 1] = tmp;
 			}
 			i++;
 		}
@@ -50,20 +50,20 @@ void	ft_arr_sort(t_stack *stack)
 	}
 }
 
-void	ft_empty_stack_a(t_stack *stack)
+void	ft_empty_set_a(t_set *set)
 {
 	int	i;
 	int	j;
 
 	j = 0;
-	while (j < stack->size_a)
+	while (j < set->size_a)
 	{
 		i = 0;
-		while (i < stack->size_a)
+		while (i < set->size_a)
 		{
-			if (stack->stack_a[j] == stack->num[i])
+			if (set->set_a[j] == set->num[i])
 			{
-				stack->stack_a[j] = i + 1;
+				set->set_a[j] = i + 1;
 				break ;
 			}
 			i++;

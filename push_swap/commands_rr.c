@@ -1,59 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_rr.c                                          :+:      :+:    :+:   */
+/*   commands_rr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:58:11 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/10 20:17:15 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:23:14 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack *stack, int flag)
+void	rra(t_set *set, int flag)
 {
 	int	i;
-	int	temp;
+	int	tmp;
 
-	if (!stack->size_a)
+	if (!set->size_a)
 		return ;
-	i = stack->size_a - 1;
-	temp = stack->stack_a[i];
+	i = set->size_a - 1;
+	tmp = set->set_a[i];
 	while (i > 0)
 	{
-		stack->stack_a[i] = stack->stack_a[i - 1];
+		set->set_a[i] = set->set_a[i - 1];
 		i--;
 	}
-	stack->stack_a[i] = temp;
+	set->set_a[i] = tmp;
 	if (flag)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack *stack, int flag)
+void	rrb(t_set *set, int flag)
 {
 	int	i;
-	int	temp;
+	int	tmp;
 
-	if (!stack->size_b)
+	if (!set->size_b)
 		return ;
-	i = stack->size_b - 1;
-	temp = stack->stack_b[i];
+	i = set->size_b - 1;
+	tmp = set->set_b[i];
 	while (i > 0)
 	{
-		stack->stack_b[i] = stack->stack_b[i - 1];
+		set->set_b[i] = set->set_b[i - 1];
 		i--;
 	}
-	stack->stack_b[i] = temp;
+	set->set_b[i] = tmp;
 	if (flag)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack *stack, int flag)
+void	rrr(t_set *set, int flag)
 {
-	rra(stack, 0);
-	rrb(stack, 0);
+	rra(set, 0);
+	rrb(set, 0);
 	if (flag)
 		write(1, "rrr\n", 4);
 }

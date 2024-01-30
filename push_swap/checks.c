@@ -6,73 +6,72 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:57:41 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/29 13:32:43 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:23:14 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_b(t_stack *stack)
+void	init_b(t_set *set)
 {
 	int	i;
 
 	i = 0;
-	stack->stack_b = (int *) malloc (stack->size_a * sizeof(int));
-	while (i < stack->size_a)
+	set->set_b = (int *) malloc (set->size_a * sizeof(int));
+	while (i < set->size_a)
 	{
-		stack->stack_b[i] = 0;
+		set->set_b[i] = 0;
 		i++;
 	}
 }
 
-int	ft_smallest(t_stack *stack)
+int	ft_smaller(t_set *set)
 {
-	int	smallest;
+	int	smaller;
 	int	i;
 
 	i = 0;
-	smallest = 2147483647;
-	while (i < stack->size_a)
+	smaller = 2147483647;
+	while (i < set->size_a)
 	{
-		if (stack->stack_a[i] < smallest)
+		if (set->set_a[i] < smaller)
 		{
-			smallest = stack->stack_a[i];
+			smaller = set->set_a[i];
 		}
 		i++;
 	}
-	return (smallest);
+	return (smaller);
 }
 
-int	ft_biggest(t_stack *stack)
+int	ft_bigger(t_set *set)
 {
-	int	biggest;
+	int	bigger;
 	int	i;
 
 	i = 0;
-	biggest = 0;
-	while (i < stack->size_a)
+	bigger = 0;
+	while (i < set->size_a)
 	{
-		if (stack->stack_a[i] > biggest)
+		if (set->set_a[i] > bigger)
 		{
-			biggest = stack->stack_a[i];
+			bigger = set->set_a[i];
 		}
 		i++;
 	}
-	return (biggest);
+	return (bigger);
 }
 
-int	ft_is_ordered(t_stack *stack)
+int	ft_is_ordered(t_set *set)
 {
 	int	i;
 
 	i = 1;
-	while (i < stack->size_a)
+	while (i < set->size_a)
 	{
-		if (stack->stack_a[i] < stack->stack_a[i - 1])
+		if (set->set_a[i] < set->set_a[i - 1])
 			return (0);
 		i++;
 	}
-	free(stack->stack_a);
-	//free(stack->num);
+	free(set->set_a);
 	return (1);
 }

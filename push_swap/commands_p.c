@@ -6,63 +6,61 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:21:28 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/29 13:11:24 by agumina          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:23:14 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack *stack, int flag)
+void	pa(t_set *set, int flag)
 {
 	int	i;
 
-	if (!stack->size_b)
+	if (!set->size_b)
 		return ;
-	i = stack->size_a;
+	i = set->size_a;
 	while (i > 0)
 	{
-		stack->stack_a[i] = stack->stack_a[i - 1];
+		set->set_a[i] = set->set_a[i - 1];
 		i--;
 	}
-	stack->stack_a[0] = stack->stack_b[0];
+	set->set_a[0] = set->set_b[0];
 	i = 0;
-	while (i < stack->size_b - 1)
+	while (i < set->size_b - 1)
 	{
-		stack->stack_b[i] = stack->stack_b[i + 1];
+		set->set_b[i] = set->set_b[i + 1];
 		i++;
 	}
-	stack->stack_b[i] = 0;
-	stack->size_b -= 1;
-	stack->size_a += 1;
+	set->set_b[i] = 0;
+	set->size_b -= 1;
+	set->size_a += 1;
 	if (flag)
 		write(1, "pa\n", 3);
 }
 
-void	pb(t_stack *stack, int flag)
+void	pb(t_set *set, int flag)
 {
 	int	i;
 
-	if (!stack->size_a)
+	if (!set->size_a)
 		return ;
-	i = stack->size_b;
-	stack->stack_b[i] = 1;
-	printf("Check\n");
-	printf("Valore di stack_b: %d\n", stack->stack_b[i]);
+	i = set->size_b;
+	set->set_b[i] = 1;
 	while (i > 0)
 	{
-		stack->stack_b[i] = stack->stack_b[i - 1];
+		set->set_b[i] = set->set_b[i - 1];
 		i--;
 	}
-	stack->stack_b[0] = stack->stack_a[0];
+	set->set_b[0] = set->set_a[0];
 	i = 0;
-	while (i < stack->size_a - 1)
+	while (i < set->size_a - 1)
 	{
-		stack->stack_a[i] = stack->stack_a[i + 1];
+		set->set_a[i] = set->set_a[i + 1];
 		i++;
 	}
-	stack->stack_a[i] = 0;
-	stack->size_a -= 1;
-	stack->size_b += 1;
+	set->set_a[i] = 0;
+	set->size_a -= 1;
+	set->size_b += 1;
 	if (flag)
 		write(1, "pb\n", 3);
 }
