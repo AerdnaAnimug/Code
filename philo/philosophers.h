@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:35:21 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/22 11:17:15 by agumina          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:46:39 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct e_params
 {
-	int	number_of_philosophers;
+	int	n_of_philo;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
@@ -30,7 +30,18 @@ typedef struct e_params
 
 typedef struct s_philo
 {
-	t_data	*params;
+	pthread_mutex_t	fork;
+	pthread_t		philot;
+	t_params		*rules;
+	pthread_mutex_t	*mutex_print;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	long long		public_time;
+	int				id;
+	long long		eating_start_time;
+	long long		starve_time;
 }	t_philo;
+
+int	ft_atoi(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: agumina <agumina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:29:10 by agumina           #+#    #+#             */
-/*   Updated: 2024/01/22 12:53:59 by agumina          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:46:39 by agumina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,29 @@ int	check_args(int argc, char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (ft_isdigit(argv[i][j]))
-				return(1);
+			if (!ft_isdigit(argv[i][j]))
+				return (0);
+			j++;
 		}
+		i++;
 	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data	params;
+	t_params	params;
+	t_philo		*philo;
 
 	if (argc < 5 || argc > 6)
 		exit(printf("Error"));
-	params->number_of_philosophers = ft_atoi(argv[1]);
-	params->time_to_die = ft_atoi(argv[2]);
-	params->time_to_eat = ft_atoi(argv[3]);
-	params->time_to_sleep = ft_atoi(argv[4]);
+	if (!check_args(argc, argv))
+		exit(printf("Error"));
+	params.n_of_philo = ft_atoi(argv[1]);
+	params.time_to_die = ft_atoi(argv[2]);
+	params.time_to_eat = ft_atoi(argv[3]);
+	params.time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
-		params->notepme = ft_atoi(argv[5]);
+		params.notepme = ft_atoi(argv[5]);
+	ft_philo_init(argc, argv, &params);
 }
