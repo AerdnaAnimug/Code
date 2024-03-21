@@ -1,22 +1,22 @@
 NAME = philo
-PHILO = main.c initialize.c utilis.c checks.c
-OBJS	= $(PHILO:.c=.o)
-RM		= rm -f
-CC		= gcc
-FLAGS	= -Wall -Werror -Wextra
+PHILO = main.c checks.c utilis.c initialize.c
+OBJS = $(PHILO:.c=.o)
+CC = gcc
+FLAGS = -Wall -Werror -Wextra
+RM = rm -f
 
 .o:.c
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+		${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 all: ${NAME}
 
 ${NAME}:
-	${CC} ${FLAGS} ${PHILO} -o ${NAME}
+		${CC} ${FLAGS} ${PHILO} -o ${NAME}
 
 clean:
-	${RM} ${OBJS}
+		${RM} ${OBJS}
 
 fclean: clean
-	${RM} ${NAME}
+		${RM} ${NAME}
 
 re: fclean all
