@@ -12,29 +12,31 @@
 
 #include "philo.h"
 
-void *routine(void)
+void *routine(void *)
 {
-	
 	printf("Thread is printing\n");
+	return (NULL);
 }
 
-t_params init_philo(t_params params);
+int logic(t_params *params)
 {
-	
-}
-
-int logic(t_philos *philos)
-{
-	t_params 	params;
+	t_philos 	*philos;
 	int			i;
 
+	philos = malloc(params->n_of_philo * sizeof(t_philos));
 	i = 0;
-	while (i < params.n_of_philo)
+	while (i < params->n_of_philo)
 	{
-		pthread_create(&philos->pthreads, NULL, &routine, (void *)philos);
+		pthread_create(&philos[i].pthreads, NULL, routine, (void *)philos);
 		i++;
 	}
-	pthread_join(philos->pthreads, (void *)philos);
+	i = 0;
+	while (i < params->n_of_philo)
+	{
+		pthread_join(philos[i].pthreads, (void *)philos);
+		i++;
+	}
+	free(philos);
 	return (1);
 }
 
@@ -45,8 +47,10 @@ int	main(int ac, char **av)
 
 	if (!check_args(ac, av))
 		return (0);
-	if (s_init(ac, av, &params))
-		return (1);
+	printf("fino a check_args tutto ok\n");
+	if (!s_init(ac, av, &params))
+		return (0);
+	printf("fino a s_init tutto ok\n");
 	i = logic(&params);
 	return (i);
 }

@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <pthread.h>
+# include <stdlib.h>
 
 typedef struct s_params
 {
@@ -29,7 +30,7 @@ typedef struct s_philos
 {
 	t_params		params;
 	int				id;
-	pthread_t			pthreads;
+	pthread_t		pthreads;
 	pthread_mutex_t	forks;
 
 }	t_philos;
